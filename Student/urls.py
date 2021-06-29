@@ -15,8 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from Student.views import Job_info
+from Student.views import student_login
+from . import views
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('orders/',Job_info),
+    path('login/', views.student_login,name='login'),
 ]
+urlpatterns += staticfiles_urlpatterns()
+
+
