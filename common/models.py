@@ -5,21 +5,24 @@ from django.db import models
 
 # 学生数据库
 class student_info(models.Model):
-    # 年级
-    grade = models.IntegerField(max_length=4)
-    # 学号
-    student_id = models.IntegerField(max_length=8)
-    # 技能
-    skills = models.CharField(max_length=200)
-    # 入职岗位
-    job_info = models.CharField(max_length=200)
+    # 用户名
+    username = models.CharField(max_length=20)
+    # 手机号
+    phone_num = models.CharField(primary_key=True,max_length=11)
     # 登陆密码
     password = models.CharField(max_length=20)
+    # 学校
+    school_info = models.CharField(max_length=25)
+
     class Meta:
         db_table = 'student'
 
 # 伯乐数据库
 class bole(models.Model):
+    # 用户名
+    username = models.CharField(max_length=20)
+    # 手机号
+    phone_num = models.CharField(primary_key=True,max_length=11)
     # 入职单位
     job = models.CharField(max_length=20)
     # 登陆密码
@@ -31,7 +34,7 @@ class bole(models.Model):
 
 class Job_info(models.Model):
     # 单位
-    company = models.CharField(max_length=20)
+    company = models.CharField(max_length=20,primary_key=True)
     # 入职条件
     requiremnt = models.CharField(max_length=200)
     # 地址

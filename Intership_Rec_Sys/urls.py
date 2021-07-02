@@ -15,11 +15,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
-from Student.views import student_login
+from Student.views import *
 from . import views
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('Student/',include('Student.urls')),
     path('Bole/',include('Bole.urls')),
-    path('',views.home,name='home')
-]
+    path('',views.home,name='home'),
+    #用于注册路由
+    path('index/',include('Student.urls')),
+    path('stu_register/',include('Student.urls')),
+]+ static("/",document_root = "./templates")
+urlpatterns += staticfiles_urlpatterns()

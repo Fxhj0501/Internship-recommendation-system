@@ -96,6 +96,7 @@ h2 {
     visibility: visible;
 }
 
+
 .form button {
     cursor: pointer;
     background-color: #3498db;
@@ -109,6 +110,63 @@ h2 {
     width: 100%;
 }
 
+#submit_button {
+    margin-bottom: 10px;
+    padding-bottom: 20px;
+    position: relative;
+    background-color: #3498db;
+    border: 2px solid #3498db;
+    color: #fff;
+
+}
+
+#back{
+
+    text-decoration: underline;
+    width:300px;
+    height:50px;
+    line-height: 50px;
+    text-align: center;
+    letter-spacing: .3rem;
+    font-size: 16px;
+    font-style: italic;
+    display: block;
+    margin:20px auto;
+    border:none;
+    color:black;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -o-border-radius: 20px;
+    border-radius: 20px;
+    -webkit-transition:background .8s;
+    -moz-transition:background .8s;
+    -o-transition:background .8s;
+    transition:background .8s;
+}
+
+#back_button {
+    margin-bottom: 10px;
+    padding-bottom: 20px;
+    position: relative;
+    background-color: #bcc9d2;
+    border: 2px solid #bcc9d2;
+    color: #685e5e;
+}
+/*
+.form button {
+    cursor: pointer;
+    background-color: #bcc9d2;
+    border: 2px solid #bcc9d2;
+    border-radius: 4px;
+    color: #685e5e;
+    display: block;
+    font-size: 16px;
+    padding: 10px;
+    margin-top: 20px;
+    width: 100%;
+}
+*/
+/*
 h1{
     color: rgba(0, 0, 0, 0.6);
     position: fixed;
@@ -117,7 +175,7 @@ h1{
     width: 100%;
     font-size: 50px;
 }
-
+*/
 img{
     position: fixed;
     top: 0px;
@@ -164,52 +222,4 @@ img{
     display:block;
     left:0;
 
-}
-
-#toStu{
-    float:left;
-    text-decoration: underline;
-    width:48%;
-    height:50px;
-    line-height: 50px;
-    text-align: center;
-    letter-spacing: .3rem;
-    font-size: 16px;
-    font-style: italic;
-    display: block;
-    margin:20px auto;
-    border:none;
-    color:black;
-    -webkit-border-radius: 20px;
-    -moz-border-radius: 20px;
-    -o-border-radius: 20px;
-    border-radius: 20px;
-    -webkit-transition:background .8s;
-    -moz-transition:background .8s;
-    -o-transition:background .8s;
-    transition:background .8s;
-}
-
-#toBole{
-    float: left;
-    text-decoration: underline;
-    width:48%;
-    height:50px;
-    line-height: 50px;
-    text-align: center;
-    letter-spacing: .3rem;
-    font-size: 16px;
-    font-style: italic;
-    display: block;
-    margin:20px auto;
-    border:none;
-    color:black;
-    -webkit-border-radius: 20px;
-    -moz-border-radius: 20px;
-    -o-border-radius: 20px;
-    border-radius: 20px;
-    -webkit-transition:background .8s;
-    -moz-transition:background .8s;
-    -o-transition:background .8s;
-    transition:background .8s;
 }

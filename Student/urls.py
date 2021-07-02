@@ -15,12 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from Student.views import student_login
+from Student import forLogin
 from . import views
+from Student import stu_register
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('login/', views.student_login,name='login'),
+    #登陆验证
+    path('login/', forLogin.check_info,name='login'),
+    path('stu_register',stu_register.addcustomer,name='add_stu')
 ]
 urlpatterns += staticfiles_urlpatterns()
 

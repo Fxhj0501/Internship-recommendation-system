@@ -1,46 +1,80 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
-    {% load static %}
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="{% static '../static/forLogin.css' %}" />
+    <script src="/static/jquery-3.2.1.min.js"></script>
     <title>欢迎使用实习岗位推荐系统</title>
 </head>
 <body>
 <h1>欢迎使用实习推荐岗位系统</h1>
 <div class="container">
-    <form id="form" class="form">
+    <form id="form" class="form" >
         <h2>账号密码登陆</h2>
         <div class="form-control">
-            <!--            <label for="username">姓名</label>-->
-            <!--            <input type="text" id="username" placeholder="姓名" />-->
-            <!--            <small>Error message</small>-->
             <label id="ser">请选择您的身份：</label>
-            <select name="您需要的服务" size="行数" id="sertype">
-                <option value="value">学生</option>
-                <option value="root">老师</option>
+            <select name="type" size="行数" id="sertype">
+                <option value="student">学生</option>
+                <option value="bole">伯乐</option>
             </select>
 
         </div>
         <div class="form-control">
             <label for="username">用户名:</label>
-            <input type="text" id="username" placeholder="用户名" />
+            <input type="text" id="username" name="username" placeholder="用户名" />
             <small>Error message</small>
         </div>
         <div class="form-control">
             <label for="password">密码:</label>
-            <input type="password" id="password" placeholder="密码" />
+            <input type="password" id="password" name="password" placeholder="密码" />
             <small>Error message</small>
         </div>
-        <button type="submit">提交</button>
+        <button type="submit" class = "btn btn-default login_btn" id="login_btn">提交</button>
     </form>
+    <a href="/stu_register.html/" id="toStu">学生注册</a>
+    <a href="/bole_register.html/" id="toBole">伯乐注册</a>
 </div>
 <div class="copyright">
     <span class="style4">  </span>
     <span an class="style4">  </span>
     <span class="style4">Copyright © 18072004 冯子健 软件综合课设 2021.</span>
 </div>
+<script>
+    $(".login_btn").click(function () {
+        $.ajax({
+            url: "/index/login/",
+            type: "post",
+            data: {
+                user: $("#username").val(),
+                pwd: $("#password").val(),
+                sertype: $("#sertype").val()
+            },
+            success: function (data) {
+                console.log(data);
+
+                if (data.user) {
+                    if (location.search){
+                        location.href = location.search.slice(6)
+                    }
+                    else {
+                        location.href = "/stu_register.html/"
+                    }
+
+                }
+                else {
+                    $(".error").text(data.msg).css({"color": "red", "margin-left": "10px"});
+                    setTimeout(function(){
+                        $(".error").text("");
+                    },1000)
+
+                }
+            }
+        })
+
+    })
+</script>
 </body>
 </html>
