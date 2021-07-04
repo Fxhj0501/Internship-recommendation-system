@@ -24,6 +24,7 @@ body {
 }
 
 .container {
+    position: sticky;
     background-color: #fff;
     border-radius: 5px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
@@ -149,10 +150,10 @@ img{
 
 .copyright
 {
-    position:absolute;
+    position:fixed;
     right:0px;
     bottom:0px;
-    color:#fff;
+    color:#000;
     display:block;
     width:100%;
     text-align:center;
@@ -164,4 +165,47 @@ img{
     display:block;
     left:0;
 
+}
+
+#submit_button {
+    margin-bottom: 10px;
+    padding-bottom: 20px;
+    position: relative;
+    background-color: #3498db;
+    border: 2px solid #3498db;
+    color: #fff;
+
+}
+
+#back{
+
+    text-decoration: underline;
+    width:300px;
+    height:50px;
+    line-height: 50px;
+    text-align: center;
+    letter-spacing: .3rem;
+    font-size: 16px;
+    font-style: italic;
+    display: block;
+    margin:20px auto;
+    border:none;
+    color:black;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -o-border-radius: 20px;
+    border-radius: 20px;
+    -webkit-transition:background .8s;
+    -moz-transition:background .8s;
+    -o-transition:background .8s;
+    transition:background .8s;
+}
+
+#back_button {
+    margin-bottom: 10px;
+    padding-bottom: 20px;
+    position: relative;
+    background-color: #bcc9d2;
+    border: 2px solid #bcc9d2;
+    color: #685e5e;
 }
