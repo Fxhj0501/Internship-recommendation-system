@@ -32,7 +32,9 @@ urlpatterns = [
     path('main_page.html/',views.main_page),
     #登陆页跳转到伯乐注册
     path(r'bole_register/',views.bole_reg),
+    #跳转到学生注册
     path('jump_stu_reg/',views.jump_stu_reg),
+    # 跳转到伯乐注册
     path('jump_bole_reg/',views.jump_stu_reg),
 ]+ static("/",document_root = "./templates")
 urlpatterns += staticfiles_urlpatterns()
