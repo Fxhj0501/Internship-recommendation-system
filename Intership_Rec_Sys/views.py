@@ -1,5 +1,6 @@
 from django.shortcuts import render
 import json
+from django.http import JsonResponse,HttpResponse
 def home(request):
     return render(request,'login.html')
 
@@ -14,3 +15,22 @@ def Login_view(request):
             return
     else:
         return render(request,'login.html')
+
+def main_page(request):
+    return render(request,'main_page.html')
+
+def bole_reg(request):
+    return render(request,'bole_register.html')
+
+def stu_reg(request):
+    return render(request,'stu_register.html')
+
+def jump_stu_reg(request):
+    response = {'msg':None}
+    response['msg'] = 'jump'
+    return JsonResponse(response)
+
+def jump_bole_reg(request):
+    response = {'msg':None}
+    response['msg'] = 'jump'
+    return JsonResponse(response)

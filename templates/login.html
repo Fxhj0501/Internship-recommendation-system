@@ -105,7 +105,7 @@
             visibility: visible;
         }
 
-        .form button {
+        #submit_button {
             cursor: pointer;
             background-color: #3498db;
             border: 2px solid #3498db;
@@ -133,29 +133,6 @@
             left: 0px;
         }
 
-        #facelogin{
-            text-decoration: underline;
-            width:300px;
-            height:50px;
-            line-height: 50px;
-            text-align: center;
-            letter-spacing: .3rem;
-            font-size: 16px;
-            font-style: italic;
-            display: block;
-            margin:20px auto;
-            border:none;
-            color:black;
-            -webkit-border-radius: 20px;
-            -moz-border-radius: 20px;
-            -o-border-radius: 20px;
-            border-radius: 20px;
-            -webkit-transition:background .8s;
-            -moz-transition:background .8s;
-            -o-transition:background .8s;
-            transition:background .8s;
-        }
-
         .copyright
         {
             position:absolute;
@@ -175,7 +152,7 @@
 
         }
 
-        #toStu{
+        #for_stu_reg{
             float:left;
             text-decoration: underline;
             width:48%;
@@ -197,9 +174,10 @@
             -moz-transition:background .8s;
             -o-transition:background .8s;
             transition:background .8s;
+            background-color: #ffffff;
         }
 
-        #toBole{
+        #for_bole_reg{
             float: left;
             text-decoration: underline;
             width:48%;
@@ -221,6 +199,7 @@
             -moz-transition:background .8s;
             -o-transition:background .8s;
             transition:background .8s;
+            background-color: #ffffff;
         }
     </style>
 </head>
@@ -230,6 +209,14 @@
     <form id="form" class="form">
         {% csrf_token %}
         <div class="form-control">
+            <label id="ser">请输入您的身份：</label>
+<!--            <select name="type" size="行数" id="sertype">-->
+<!--                <option value="student" id="stu">学生</option>-->
+<!--                <option value="bole" id="bole">伯乐</option>-->
+<!--            </select>-->
+            <input type="text" id="sertype"  placeholder="学生/伯乐">
+        </div>
+        <div class="form-control">
             <label for="phone">手机号:</label>
             <input type="text" id="phone" name = "phone" placeholder="注册手机号">
         </div>
@@ -238,11 +225,13 @@
             <input type="password" id="password" placeholder="注册密码" />
         </div>
         <div class="submit_button">
-            <button type="submit" class ="login_btn" id="submit_button">提交</button>
+            <input type="button" class="btn btn-default login_btn" value="submit" id="submit_button"><span class="error"></span>
         </div>
     </form>
-    <a href="/stu_register.html/" class="btn btn-success pull-right">注册</a>
+    <input type="button" class="btn btn-default stu_reg_btn" value="学生注册" id="for_stu_reg"><span class="error"></span>
+    <input type="button" class="btn btn-default bole_reg_btn" value="伯乐注册" id="for_bole_reg"><span class="error"></span>
 </div>
+
 
 
 <script src="/static/jquery-3.2.1.min.js"></script>
@@ -253,20 +242,50 @@
             url: "index/login/",
             type: "post",
             data: {
+                type:$("#sertype").val(),
                 phone: $("#phone").val(),
                 pwd: $("#password").val(),
             },
             success: function (data) {
                 console.log(data);
-                if (data.msg == '成功登陆') {
-                        location.href = "/main_page.html/"
+                if (data.msg == '学生成功登陆') {
+                    location.href = "main_page.html/"
                 }
-                else {
+                else if (data.msg == '伯乐登陆成功'){
+                    location.href = "main_page.html/"
+                }
+                else{
                     alert(data.msg)
                 }
             }
         })
 
+    })
+
+    $(".stu_reg_btn").click(function (){
+        $.ajax({
+            url: "jump_stu_reg/",
+            type: "post",
+            success: function (data) {
+                if (data.msg == 'jump') {
+                    location.href = "/stu_register/"
+                }
+            }
+
+        })
+    })
+
+    $(".bole_reg_btn").click(function (){
+        $.ajax({
+            url: "jump_bole_reg/",
+            type: "post",
+            success: function (data) {
+                if (data.msg == 'jump') {
+                    location.href = "/bole_register/"
+                }
+            }
+
+        })
     })
 
 </script>
