@@ -9,9 +9,9 @@ from django.shortcuts import render
 def check_info( request):
     # 从 HTTP GET 请求中获取用户名、密码参数
     if request.method == "POST":
-        username = request.POST.get("user")
+        phone = request.POST.get("phone")
         pwd = request.POST.get("pwd")
-        response = {"usr":None,"msg":None,"pwd":None}
+        response = {"msg":None}
        #user = authenticate(request,username=username,password = pwd)
         # user = student_info.objects.get(username=username)
         # if user.password == pwd:
@@ -22,12 +22,12 @@ def check_info( request):
         #     response["msg"] = '账号错了'
         #     return JsonResponse(response)
         try:
-            user = student_info.objects.get(username=username)
+            phone = student_info.objects.get(phone_num=phone)
         except:
-            response['msg'] = 'a'
+            response['msg'] = '用户名或密码错误'
             return JsonResponse(response)
-        if user.password == pwd:
-            response['msg'] = 'b'
+        if phone.password == pwd:
+            response['msg'] = '成功登陆'
             return JsonResponse(response)
 
 

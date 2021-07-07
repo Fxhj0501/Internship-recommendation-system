@@ -24,8 +24,9 @@ urlpatterns = [
     path('Student/',include('Student.urls')),
     path('Bole/',include('Bole.urls')),
     path('',views.home,name='home'),
-    #用于注册路由
+    #用于登陆
     path('index/',include('Student.urls')),
+    #用于学生注册
     path('stu_register/',include('Student.urls')),
 ]+ static("/",document_root = "./templates")
 urlpatterns += staticfiles_urlpatterns()

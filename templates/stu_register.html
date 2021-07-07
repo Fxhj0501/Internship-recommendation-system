@@ -26,7 +26,7 @@
             justify-content: center;
             min-height: 100vh;
             margin: 0;
-            background-image:url("./bg.jpg");
+            background-image:url("../static/bg.jpg");
             background-size: cover;
             background-repeat:no-repeat ;
             background-attachment:fixed ;
@@ -233,11 +233,12 @@
 
         }
     </style>
-    <title>欢迎使用实习推荐岗位系统</title>
+    <title>欢迎使用实习岗位推荐系统</title>
 </head>
 <body>
 <div class="container">
-    <form id="form" class="form" action="/stu_register" method="get">
+    <form id="form" class="form">
+        {% csrf_token %}
         <h2>学生账号注册</h2>
         <div class="form-control">
             <label for="username">用户名:</label>
@@ -273,5 +274,9 @@
     <a href="/login.html/" id="back">返回</a>
 
 </div>
+<script src="/static/jquery-3.2.1.min.js"></script>
+<script>
+
+</script>
 </body>
 </html>
