@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <!--    <link rel="stylesheet" href="{% static '../static/forStudentRegister.css' %}" />-->
+<!--    <link rel="stylesheet" href="{% static '../static/forStudentRegister.css' %}" />-->
     <style type="text/css">
         @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
 
@@ -244,6 +244,10 @@
         {% csrf_token %}
         <h2>学生账号注册</h2>
         <div class="form-control">
+            <label for="username">用户名:</label>
+            <input type="text" id="username" name="username" placeholder="用户名" />
+        </div>
+        <div class="form-control">
             <label for="phone">手机号:</label>
             <input type="text" id="phone" name="phone" placeholder="手机号"/>
         </div>
@@ -273,24 +277,23 @@
     //注册验证
     $(".submit_btn").click(function () {
         $.ajax({
-            url: "Student/stu_register/",
+            url: "index/login/",
             type: "post",
             data: {//暂空
+                name: $("#username").val(),
                 phone: $("#phone").val(),
                 pwd: $("#password").val(),
                 confirm_pwd: $("#confirm_password").val(),
                 school: $("#school").val()
-            },
+           },
             success: function (data) {
                 console.log(data);
-                if (data.msg == '注册成功，请登陆') {
-                    location.href = "/"
+                if (data.msg == '学生成功注册') {
+                    location.href = "main_page.html/"
                 }
 
                 else{
-                    alert(data.msg);
-                    location.href ='/stu_register/'
-
+                    alert(data.msg)
                 }
             }
         })

@@ -5,7 +5,203 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>欢迎登陆实习岗位推荐系统</title>
-    <link rel="stylesheet" href="{% static '../static/forLogin.css' %}" />
+<!--    <link rel="stylesheet" href="/static/bootstrap.css">-->
+    <style type="text/css">
+        @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+
+        :root {
+            --success-color: #2ecc71;
+            --error-color: #e74c3c;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f9fafb;
+            font-family: 'Open Sans', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-image:url("../static/bg.jpg");
+            background-size: cover;
+            background-repeat:no-repeat ;
+            background-attachment:fixed ;
+        }
+
+        .container {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            width: 400px;
+        }
+
+        h2 {
+            text-align: center;
+            margin: 0 0 20px;
+        }
+
+        .form {
+            padding: 30px 40px;
+        }
+
+        .form-control {
+            margin-bottom: 10px;
+            padding-bottom: 20px;
+            position: relative;
+        }
+
+        .form-control label {
+            color: #777;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-control input {
+            border: 2px solid #f0f0f0;
+            border-radius: 4px;
+            display: block;
+            width: 100%;
+            padding: 10px;
+            font-size: 14px;
+        }
+
+        .form-control input:focus {
+            outline: 0;
+            border-color: #777;
+        }
+
+        .form-control.success input {
+            border-color: var(--success-color);
+        }
+
+        .form-control.error input {
+            border-color: var(--error-color);
+        }
+
+        .form-control small {
+            color: var(--error-color);
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            visibility: hidden;
+        }
+
+        .form-control select{
+            border: 2px solid #f0f0f0;
+            border-radius: 4px;
+            color: #777;
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+            width: 85%;
+            padding: 10px;
+        }
+
+        .form-control.error small {
+            visibility: visible;
+        }
+
+        #submit_button {
+            cursor: pointer;
+            background-color: #3498db;
+            border: 2px solid #3498db;
+            border-radius: 4px;
+            color: #fff;
+            display: block;
+            font-size: 16px;
+            padding: 10px;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        h1{
+            color: rgba(0, 0, 0, 0.6);
+            position: fixed;
+            top: 0px;
+            text-align: center;
+            width: 100%;
+            font-size: 50px;
+        }
+
+        img{
+            position: fixed;
+            top: 0px;
+            left: 0px;
+        }
+
+        .copyright
+        {
+            position:absolute;
+            right:0px;
+            bottom:0px;
+            color:#fff;
+            display:block;
+            width:100%;
+            text-align:center;
+            z-index: 10;
+        }
+        .bottom span
+        {
+            position:relative;
+            display:block;
+            left:0;
+
+        }
+
+        #for_stu_reg{
+            float:left;
+            text-decoration: underline;
+            width:48%;
+            height:50px;
+            line-height: 50px;
+            text-align: center;
+            letter-spacing: .3rem;
+            font-size: 16px;
+            font-style: italic;
+            display: block;
+            margin:20px auto;
+            border:none;
+            color:black;
+            -webkit-border-radius: 20px;
+            -moz-border-radius: 20px;
+            -o-border-radius: 20px;
+            border-radius: 20px;
+            -webkit-transition:background .8s;
+            -moz-transition:background .8s;
+            -o-transition:background .8s;
+            transition:background .8s;
+            background-color: #ffffff;
+        }
+
+        #for_bole_reg{
+            float: left;
+            text-decoration: underline;
+            width:48%;
+            height:50px;
+            line-height: 50px;
+            text-align: center;
+            letter-spacing: .3rem;
+            font-size: 16px;
+            font-style: italic;
+            display: block;
+            margin:20px auto;
+            border:none;
+            color:black;
+            -webkit-border-radius: 20px;
+            -moz-border-radius: 20px;
+            -o-border-radius: 20px;
+            border-radius: 20px;
+            -webkit-transition:background .8s;
+            -moz-transition:background .8s;
+            -o-transition:background .8s;
+            transition:background .8s;
+            background-color: #ffffff;
+        }
+    </style>
 </head>
 <body>
 <h1>欢迎使用实习推荐岗位系统</h1>
@@ -14,6 +210,10 @@
         {% csrf_token %}
         <div class="form-control">
             <label id="ser">请输入您的身份：</label>
+<!--            <select name="type" size="行数" id="sertype">-->
+<!--                <option value="student" id="stu">学生</option>-->
+<!--                <option value="bole" id="bole">伯乐</option>-->
+<!--            </select>-->
             <input type="text" id="sertype"  placeholder="学生/伯乐">
         </div>
         <div class="form-control">
@@ -25,7 +225,7 @@
             <input type="password" id="password" placeholder="注册密码" />
         </div>
         <div class="submit_button">
-            <input type="button" class="btn btn-default login_btn" value="提交" id="submit_button"><span class="error"></span>
+            <input type="button" class="btn btn-default login_btn" value="submit" id="submit_button"><span class="error"></span>
         </div>
     </form>
     <input type="button" class="btn btn-default stu_reg_btn" value="学生注册" id="for_stu_reg"><span class="error"></span>
