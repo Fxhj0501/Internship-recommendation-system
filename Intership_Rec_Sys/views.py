@@ -34,3 +34,11 @@ def jump_bole_reg(request):
     response = {'msg':None}
     response['msg'] = 'jump'
     return JsonResponse(response)
+
+def jump_login(request):
+    response = {'msg':None}
+    response['msg'] = 'jump'
+    return JsonResponse(response)
+
+def login_page(request):
+    return render(request,'login.html')

@@ -17,13 +17,14 @@ from django.contrib import admin
 from django.urls import path
 from Student import forLogin
 from . import views
-from Student import stu_register
+from Student import forStuReg
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 urlpatterns = [
     path('admin/', admin.site.urls),
     #登陆验证
     path('login/', forLogin.check_info,name='login'),
-    path('stu_register',stu_register.addcustomer,name='add_stu')
+    #向学生数据库中添加信息
+    path('stu_register/',forStuReg.stu_reg,name='add_stu')
 ]
 urlpatterns += staticfiles_urlpatterns()
 

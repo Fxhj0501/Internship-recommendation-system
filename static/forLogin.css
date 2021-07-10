@@ -17,7 +17,7 @@ body {
     justify-content: center;
     min-height: 100vh;
     margin: 0;
-    background-image:url("./bg.jpg");
+    background-image:url("../static/bg.jpg");
     background-size: cover;
     background-repeat:no-repeat ;
     background-attachment:fixed ;
@@ -96,7 +96,7 @@ h2 {
     visibility: visible;
 }
 
-.form button {
+#submit_button {
     cursor: pointer;
     background-color: #3498db;
     border: 2px solid #3498db;
@@ -124,29 +124,6 @@ img{
     left: 0px;
 }
 
-#facelogin{
-    text-decoration: underline;
-    width:300px;
-    height:50px;
-    line-height: 50px;
-    text-align: center;
-    letter-spacing: .3rem;
-    font-size: 16px;
-    font-style: italic;
-    display: block;
-    margin:20px auto;
-    border:none;
-    color:black;
-    -webkit-border-radius: 20px;
-    -moz-border-radius: 20px;
-    -o-border-radius: 20px;
-    border-radius: 20px;
-    -webkit-transition:background .8s;
-    -moz-transition:background .8s;
-    -o-transition:background .8s;
-    transition:background .8s;
-}
-
 .copyright
 {
     position:absolute;
@@ -166,7 +143,7 @@ img{
 
 }
 
-#toStu{
+#for_stu_reg{
     float:left;
     text-decoration: underline;
     width:48%;
@@ -188,9 +165,10 @@ img{
     -moz-transition:background .8s;
     -o-transition:background .8s;
     transition:background .8s;
+    background-color: #ffffff;
 }
 
-#toBole{
+#for_bole_reg{
     float: left;
     text-decoration: underline;
     width:48%;
@@ -212,4 +190,5 @@ img{
     -moz-transition:background .8s;
     -o-transition:background .8s;
     transition:background .8s;
+    background-color: #ffffff;
 }

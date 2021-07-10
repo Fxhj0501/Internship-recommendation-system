@@ -26,9 +26,9 @@ urlpatterns = [
     path('',views.home,name='home'),
     #用于登陆处理
     path('index/',include('Student.urls')),
-    #跳转到学生注册
+    #跳转到学生注册页面
     path(r'stu_register/',views.stu_reg),
-    #登陆页的跳转
+    #登陆页到主页面跳转
     path('main_page.html/',views.main_page),
     #登陆页跳转到伯乐注册
     path(r'bole_register/',views.bole_reg),
@@ -36,5 +36,13 @@ urlpatterns = [
     path('jump_stu_reg/',views.jump_stu_reg),
     # 跳转到伯乐注册
     path('jump_bole_reg/',views.jump_stu_reg),
+    #跳转到登录
+    path('stu_register/jump_login/',views.jump_login),
+    #跳转到登录
+    path('login_page/',views.login_page),
+    #学生注册程序，用于向数据库中添加学生信息
+    path('stu_register/Student/',include('Student.urls')),
+    #伯乐注册程序，用于向数据库中添加伯乐信息
+    path('bole_register/Bole/',include('Bole.urls'))
 ]+ static("/",document_root = "./templates")
 urlpatterns += staticfiles_urlpatterns()

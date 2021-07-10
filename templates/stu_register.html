@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-<!--    <link rel="stylesheet" href="{% static '../static/forStudentRegister.css' %}" />-->
+    <!--    <link rel="stylesheet" href="{% static '../static/forStudentRegister.css' %}" />-->
     <style type="text/css">
         @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
 
@@ -120,19 +120,21 @@
         }
 
         #submit_button {
-            margin-bottom: 10px;
-            padding-bottom: 20px;
-            position: relative;
+            cursor: pointer;
             background-color: #3498db;
             border: 2px solid #3498db;
+            border-radius: 4px;
             color: #fff;
-
+            display: block;
+            font-size: 16px;
+            padding: 10px;
+            margin-top: 20px;
+            width: 100%;
         }
 
         #back{
-
             text-decoration: underline;
-            width:300px;
+            width:48%;
             height:50px;
             line-height: 50px;
             text-align: center;
@@ -151,6 +153,7 @@
             -moz-transition:background .8s;
             -o-transition:background .8s;
             transition:background .8s;
+            background-color: #ffffff;
         }
 
         #back_button {
@@ -241,37 +244,70 @@
         {% csrf_token %}
         <h2>学生账号注册</h2>
         <div class="form-control">
-            <label for="username">用户名:</label>
-            <input type="text" id="username" name="username" placeholder="用户名" />
-            <small>Error message</small>
-        </div>
-        <div class="form-control">
             <label for="phone">手机号:</label>
             <input type="text" id="phone" name="phone" placeholder="手机号"/>
-            <small>Error message</small>
         </div>
         <div class="form-control">
             <label for="password">密码:</label>
             <input type="password" id="password" name="password" placeholder="密码" />
-            <small>Error message</small>
+        </div>
+        <div class="form-control">
+            <label for="confirm_password">确认密码:</label>
+            <input type="password" id="confirm_password" name="password" placeholder="确认密码" />
         </div>
 
         <div class="form-control">
             <label for="school">学校:</label>
             <input type="text" id="school" name="school" placeholder="学校"/>
-            <small>Error message</small>
         </div>
 
         <div class="submit_button">
-            <button type="submit" id="submit_button">提交</button>
+            <input type="button" class="btn btn-default submit_btn" value="提交" id="submit_button"><span class="error"></span>
         </div>
     </form>
-    <a href="/login.html/" id="back">返回</a>
+    <input type="button" class="btn btn-default stu_reg_btn" value="返回" id="back"><span class="error"></span>
 
 </div>
 <script src="/static/jquery-3.2.1.min.js"></script>
 <script>
+    //注册验证
+    $(".submit_btn").click(function () {
+        $.ajax({
+            url: "Student/stu_register/",
+            type: "post",
+            data: {//暂空
+                phone: $("#phone").val(),
+                pwd: $("#password").val(),
+                confirm_pwd: $("#confirm_password").val(),
+                school: $("#school").val()
+            },
+            success: function (data) {
+                console.log(data);
+                if (data.msg == '注册成功，请登陆') {
+                    location.href = "/"
+                }
 
+                else{
+                    alert(data.msg);
+                    location.href ='/stu_register/'
+
+                }
+            }
+        })
+
+    })
+    $("#back").click(function (){
+        $.ajax({
+            url: "jump_login/",
+            type: "post",
+            success: function (data) {
+                if (data.msg == 'jump') {
+                    location.href = "/"
+                }
+            }
+
+        })
+    })
 </script>
 </body>
 </html>

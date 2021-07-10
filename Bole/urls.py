@@ -16,7 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from Bole.views import code_info
+from Bole import forBoleReg
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('orders/',code_info),
+    path('bole_register/',forBoleReg.bole_reg,name='add_bole')
 ]
