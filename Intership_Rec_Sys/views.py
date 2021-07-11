@@ -22,9 +22,10 @@ def Login_view(request):
 
 def main_page(request):
     print("hit")
-    test1 = { "name":"giao岗", "salary" : "1个亿"}
-    test2 = {"name": "蚌埠住了", "salary": "2个亿"}
+    test1 = { "name":"giao岗", "salary" : "1个亿","pic" : "C++.jpg"}
+    test2 = {"name": "蚌埠住了", "salary": "2个亿","pic" : "product_manager.jpg"}
     list = [test1,test2]
+
     return render(request,'main_page.html', {"items": list, "pho_num":"111111"})
 
 def bole_reg(request):
