@@ -25,20 +25,21 @@ def Login_view(request):
 def main_page(request):
     #print("hit")
 
-    test1 = { "name":"giao岗", "salary" : "1个亿","pic" : "C++.jpg"}
-    test2 = {"name": "蚌埠住了", "salary": "2个亿","pic" : "product_manager.jpg"}
-    test3 = {"name": "giao岗", "salary": "1个亿", "pic": "C++.jpg"}
-    test4 = {"name": "蚌埠住了", "salary": "2个亿", "pic": "product_manager.jpg"}
-    test5 = {"name": "giao岗", "salary": "1个亿", "pic": "C++.jpg"}
-    test6 = {"name": "蚌埠住了", "salary": "2个亿", "pic": "product_manager.jpg"}
-    test7 = {"name": "giao岗", "salary": "1个亿", "pic": "C++.jpg"}
-    test8 = {"name": "蚌埠住了", "salary": "2个亿", "pic": "product_manager.jpg"}
-    test9 = {"name": "giao岗", "salary": "1个亿", "pic": "C++.jpg"}
-    test10 = {"name": "蚌埠住了", "salary": "2个亿", "pic": "product_manager.jpg"}
-    test11 = {"name": "giao岗", "salary": "1个亿", "pic": "C++.jpg"}
-    test12 = {"name": "蚌埠住了", "salary": "2个亿", "pic": "product_manager.jpg"}
-    test13 = {"name": "giao岗", "salary": "1个亿", "pic": "C++.jpg"}
-    test14 = {"name": "蚌埠住了", "salary": "2个亿", "pic": "product_manager.jpg"}
+    test1 = { "name":"字节跳动 C++岗", "salary" : "100","pic" : "C++"}
+    test2 = {"name": "字节跳动 产品经理", "salary": "200","pic" : "product_manager"}
+    test3 = {"name": "字节跳动 C++岗", "salary": "100", "pic": "C++"}
+    test4 = {"name": "字节跳动 产品经理", "salary": "200", "pic": "product_manager"}
+    test5 = {"name": "字节跳动 C++岗", "salary": "100", "pic": "C++"}
+    test6 = {"name": "字节跳动 产品经理", "salary": "200", "pic": "product_manager"}
+    test7 = {"name": "字节跳动 C++岗", "salary": "100", "pic": "C++"}
+    test8 = {"name": "字节跳动 产品经理", "salary": "200", "pic": "product_manager"}
+    test9 = {"name": "字节跳动 C++岗", "salary": "100", "pic": "C++"}
+    test10 = {"name": "字节跳动 产品经理", "salary": "200", "pic": "product_manager"}
+    test11 = {"name": "字节跳动 C++岗", "salary": "100", "pic": "C++"}
+    test12 = {"name": "字节跳动 产品经理", "salary": "200", "pic": "product_manager"}
+    test13 = {"name": "字节跳动 C++岗", "salary": "100", "pic": "C++"}
+    test14 = {"name": "字节跳动 产品经理", "salary": "200", "pic": "product_manager"}
+    test = "f\nf"
 
     list = [test1,test2,test3,test4,test5,test6,test7,test8,test9,test10,test11,test12,test13,test14,]
     #test=[1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0]
@@ -60,7 +61,7 @@ def main_page(request):
             # 如果请求的页数不在合法的页数范围内，返回结果的最后一页。
             l = paginator.page(paginator.num_pages)
 
-    return render(request,'main_page.html', {"items": l, "pho_num":"111111"})
+    return render(request,'main_page.html', {"items": l, "pho_num":"111111", "test":test})
 
 def bole_reg(request):
     return render(request,'bole_register.html')
@@ -90,3 +91,7 @@ def load_phone(request):
     response = {'msg': None}
     response['msg'] = '13810874508'
     return JsonResponse(response)
+
+def stu_personal_page(request):
+    student = {"PhoneNum":"13810874508","Password":"123456","SchoolInfo":"北京工业大学","Skills":"C++,Python","InternshipJob":"爸爸"}
+    return render(request,'stu_personal_page.html',{"item":student})

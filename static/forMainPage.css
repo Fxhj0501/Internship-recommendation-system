@@ -10809,6 +10809,9 @@ textarea.form-control-lg {
         font-size: 1.5rem !important;
     }
 }
+p{
+	white-space: pre-line;
+}
 @media print {
     .d-print-inline {
         display: inline !important;
