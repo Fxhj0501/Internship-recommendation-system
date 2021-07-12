@@ -15,11 +15,49 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
-from Student.views import student_login
+from Student.views import *
 from . import views
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('Student/',include('Student.urls')),
     path('Bole/',include('Bole.urls')),
-    path('',views.home,name='home')
-]
+    path('',views.home,name='home'),
+    #用于登陆处理
+    path('index/',include('Student.urls')),
+    #跳转到学生注册
+    path(r'stu_register/',views.stu_reg),
+    #登陆页的跳转
+    path('main_page.html/',views.main_page),
+    #登陆页跳转到伯乐注册
+    path(r'bole_register/',views.bole_reg),
+    #跳转到学生注册
+    path('jump_stu_reg/',views.jump_stu_reg),
+    # 跳转到伯乐注册
+    path('jump_bole_reg/',views.jump_stu_reg),
+    #加载伯乐主页--csq
+    path('bole_main_page/',views.bole_main_page),
+    #加载内推码提交页--csq
+    path('postCode/',views.postCode),
+    #加载我的岗位--csq
+    path('myJob/',views.myJob),
+    #伯乐主页跳转到内推码提交页
+    path('bole_main_page/jump_main/',views.jump_postCode),
+    #伯乐主页跳转到我的岗位
+    path('bole_main_page/jump_myJob/',views.jump_myJob),
+
+    #提交内推码跳转到伯乐主页
+    path('postCode/jump_bole_main/',views.jump_bole_main),
+    #提交内推码跳转到我的岗位
+    path('postCode/jump_myJob/',views.jump_myJob),
+
+    #我的岗位跳转到伯乐主页
+    path('myJob/jump_bole_main/',views.jump_bole_main),
+    #我的岗位跳转到发布内推码
+    path('myJob/jump_main/',views.jump_postCode),
+    
+    #提交内推码
+    path('postCode/submit_code/',views.submit_code)
+]+ static("/",document_root = "./templates")
+urlpatterns += staticfiles_urlpatterns()
