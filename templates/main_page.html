@@ -67,7 +67,6 @@
 
   <div class="container px-4 px-lg-5 mt-5">
     <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-      <!--                    第1行-->
       {% for item in items %}
       <div class="col mb-5">
         <div class="card h-100">
@@ -79,7 +78,7 @@
               <!-- Product name-->
               <h5 class="fw-bolder">{{item.name}}</h5>
               <!-- Product price-->
-              ￥{{item.salary}}
+              ￥{{item.salary}}/天
             </div>
           </div>
           <!-- Product actions-->
@@ -94,8 +93,26 @@
       {% endfor%}
 
 
-
     </div>
+     <div id="pages" class="text-center" >
+        <nav>
+            <ul class="pagination">
+                <li class="step-links">
+                {% if items.has_previous %}
+                    <a class='active' href="?page={{ books.previous_page_number }}">上一页</a>
+                {% endif %}
+
+                <span class="current">
+                    Page {{ items.number }} of {{ items.paginator.num_pages }}</span>
+
+                {% if items.has_next %}
+                    <a class='active' href="?page={{ items.next_page_number }}">下一页</a>
+                {% endif %}
+                </li>
+            </ul>
+        </nav>
+      </div>
+
   </div>
 </section>
 <!-- Footer-->
