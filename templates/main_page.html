@@ -71,19 +71,19 @@
       <div class="col mb-5">
         <div class="card h-100">
           <!-- Product image-->
-          <img class="card-img-top" src="../static/logo/{{ item.pic }}.jpg" alt="..." />
+          <img class="card-img-top" src="../static/logo/{{ item.Company }}.jpg" alt="..." />
           <!-- Product details-->
           <div class="card-body p-4">
             <div class="text-center">
               <!-- Product name-->
-              <h5 class="fw-bolder">{{item.name}}</h5>
+              <h5 class="fw-bolder">{{item.JobName}}</h5>
               <!-- Product price-->
-              ￥{{item.salary}}/天
+              ￥{{item.Salary}}/天
             </div>
           </div>
           <!-- Product actions-->
           <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">详情</a></div>
+            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="/job_detail/{{item.JobName}}/">详情</a></div>
           </div>
         </div>
 
@@ -94,7 +94,7 @@
 
 
     </div>
-      <p style="white-space: pre-line;">{{test}}</p>
+<!--      <p style="white-space: pre-line;">{{test}}</p>-->
      <div id="pages" class="text-center" >
         <nav>
             <ul class="pagination">

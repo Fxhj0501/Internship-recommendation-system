@@ -43,6 +43,9 @@ urlpatterns = [
     #加载电话号码
     path('personal_account/',views.load_phone),
     #跳转到个人主页
-    path('stu_personal_page/',views.stu_personal_page)
+    path('stu_personal_page/',views.stu_personal_page),
+    #详情页面
+    path('job_detail/<JobName>/',views.job_detail_page),
+    # path('job_detail/',views.job_detail_page),
 ]+ static("/",document_root = "./templates")
 urlpatterns += staticfiles_urlpatterns()

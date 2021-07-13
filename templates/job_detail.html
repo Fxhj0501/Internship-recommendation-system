@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>商品详情</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="../static/assets/img/favicon.png" rel="icon">
+  <link href="../static/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="../../static/assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../../static/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../../static/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../../static/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../../static/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../../static/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="../../static/assets/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: iPortfolio - v3.3.0
+  * Template URL: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body data-aos-easing="ease-in-out" data-aos-duration="1000" data-aos-delay="0">
+
+  <!-- ======= Mobile nav toggle button ======= -->
+  <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
+
+  <!-- ======= Header ======= -->
+  <header id="header">
+    <div class="d-flex flex-column">
+
+      <div class="profile">
+        <img src="../../static/iPortfolio Bootstrap Template - Index_files/user.jpg" alt="" class="img-fluid rounded-circle">
+        <h1 class="text-light"><a href="/">{{ item.JobName }}</a></h1>
+      </div>
+
+      <nav id="navbar" class="nav-menu navbar">
+        <ul>
+          <li><a href="#about" class="nav-link scrollto active"><i class="bx bx-user"></i> <span>岗位介绍</span></a></li>
+          <li><a href="/main_page/" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>返回主页</span></a></li>
+
+        </ul>
+      </nav><!-- .nav-menu -->
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+<!--  <section id="hero" class="d-flex flex-column justify-content-center align-items-center">-->
+<!--    <div class="hero-container aos-init aos-animate" data-aos="fade-in">-->
+<!--      <h1>{{ item.PhoneNum }}</h1>-->
+<!--      <p>I'm <span class="typed" data-typed-items="Student"></span></p>-->
+<!--    </div>-->
+<!--  </section>&lt;!&ndash; End Hero &ndash;&gt;-->
+
+  <main id="main">
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>岗位信息</h2>
+<!--          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>-->
+        </div>
+
+        <div class="row">
+          <div class="col-lg-4" data-aos="fade-right">
+            <img src="../../static/logo/{{ item.Company }}.jpg" class="img-fluid" alt="">
+          </div>
+          <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
+            <h3>{{ item.JobName }}</h3>
+            <div class="row">
+              <div class="col-lg-6">
+                <ul>
+                  <li><i class="bi bi-chevron-right"></i> <strong>单位:</strong> <span>{{ item.Company }}</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>联系方式:</strong> <span>{{ item.ContactInfo }}</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>地址:</strong> <span>{{ item.Adress }}</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>日薪:</strong> <span>{{ item.Salary }}</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
+            <h3>岗位描述</h3>
+            <p class="fst-italic" style="white-space: pre-line;">
+              {{ item.JobInfo }}
+            </p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
+            <h3>技能要求</h3>
+            <p class="fst-italic" style="white-space: pre-line;">
+              {{ item.Skills }}
+            </p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
+            <h3>内推码</h3>
+            <p class="fst-italic" style="white-space: pre-line;">
+              {{ item.RecCode }}
+            </p>
+          </div>
+        </div>
+
+
+      </div>
+    </section><!-- End About Section -->
+
+    <!-- ======= Facts Section ======= -->
+    <!-- End Facts Section -->
+
+    <!-- ======= Skills Section ======= -->
+    <!-- End Skills Section -->
+
+    <!-- ======= Resume Section ======= -->
+    <!-- ======= Portfolio Section ======= -->
+    <!-- End Portfolio Section -->
+
+    <!-- ======= Services Section ======= -->
+    <!-- End Services Section -->
+
+    <!-- ======= Testimonials Section ======= -->
+    <!-- End Testimonials Section -->
+
+    <!-- ======= Contact Section ======= -->
+    <!-- End Contact Section -->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="container">
+      <div class="copyright">
+        © Copyright <strong><span>2018软工课设 18组</span></strong>
+      </div>
+      <div class="credits">
+        Designed by 2018软工课设 18组
+      </div>
+    </div>
+  </footer><!-- End  Footer -->
+
+<!--  <a href="file:///Users/fengzijian/Downloads/iPortfolio/index.html#" class="back-to-top d-flex align-items-center justify-content-center active"><i class="bi bi-arrow-up-short"></i></a>-->
+
+  <!-- Vendor JS Files -->
+  <script src="../../static/iPortfolio Bootstrap Template - Index_files/aos.js"></script>
+  <script src="../../static/iPortfolio Bootstrap Template - Index_files/bootstrap.bundle.min.js"></script>
+  <script src="../../static/iPortfolio Bootstrap Template - Index_files/glightbox.min.js"></script>
+  <script src="../../static/iPortfolio Bootstrap Template - Index_files/isotope.pkgd.min.js"></script>
+  <script src="../../static/iPortfolio Bootstrap Template - Index_files/validate.js"></script>
+  <script src="../../static/iPortfolio Bootstrap Template - Index_files/purecounter.js"></script>
+  <script src="../../static/iPortfolio Bootstrap Template - Index_files/swiper-bundle.min.js"></script>
+  <script src="../../static/iPortfolio Bootstrap Template - Index_files/typed.min.js"></script>
+  <script src="../../static/iPortfolio Bootstrap Template - Index_files/noframework.waypoints.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="../../static/iPortfolio Bootstrap Template - Index_files/main.js"></script>
+  <style type="text/css" data-typed-js-css="true">
+        .typed-cursor{
+          opacity: 1;
+        }
+        .typed-cursor.typed-cursor--blink{
+          animation: typedjsBlink 0.7s infinite;
+          -webkit-animation: typedjsBlink 0.7s infinite;
+                  animation: typedjsBlink 0.7s infinite;
+        }
+        @keyframes typedjsBlink{
+          50% { opacity: 0.0; }
+        }
+        @-webkit-keyframes typedjsBlink{
+          0% { opacity: 1; }
+          50% { opacity: 0.0; }
+          100% { opacity: 1; }
+        }
+      </style>
+
+
+
+</body>
+</html>

@@ -25,20 +25,20 @@ def Login_view(request):
 def main_page(request):
     #print("hit")
 
-    test1 = { "name":"字节跳动 C++岗", "salary" : "100","pic" : "C++"}
-    test2 = {"name": "字节跳动 产品经理", "salary": "200","pic" : "product_manager"}
-    test3 = {"name": "字节跳动 C++岗", "salary": "100", "pic": "C++"}
-    test4 = {"name": "字节跳动 产品经理", "salary": "200", "pic": "product_manager"}
-    test5 = {"name": "字节跳动 C++岗", "salary": "100", "pic": "C++"}
-    test6 = {"name": "字节跳动 产品经理", "salary": "200", "pic": "product_manager"}
-    test7 = {"name": "字节跳动 C++岗", "salary": "100", "pic": "C++"}
-    test8 = {"name": "字节跳动 产品经理", "salary": "200", "pic": "product_manager"}
-    test9 = {"name": "字节跳动 C++岗", "salary": "100", "pic": "C++"}
-    test10 = {"name": "字节跳动 产品经理", "salary": "200", "pic": "product_manager"}
-    test11 = {"name": "字节跳动 C++岗", "salary": "100", "pic": "C++"}
-    test12 = {"name": "字节跳动 产品经理", "salary": "200", "pic": "product_manager"}
-    test13 = {"name": "字节跳动 C++岗", "salary": "100", "pic": "C++"}
-    test14 = {"name": "字节跳动 产品经理", "salary": "200", "pic": "product_manager"}
+    test1 = { "JobName":"字节跳动 C++岗", "Salary" : "100","Company" : "C++"}
+    test2 = {"JobName": "字节跳动 产品经理", "Salary": "200","Company" : "product_manager"}
+    test3 = {"JobName": "字节跳动 C++岗", "Salary": "100", "Company": "C++"}
+    test4 = {"JobName": "字节跳动 产品经理", "Salary": "200", "Company": "product_manager"}
+    test5 = {"JobName": "字节跳动 C++岗", "Salary": "100", "Company": "C++"}
+    test6 = {"JobName": "字节跳动 产品经理", "Salary": "200", "Company": "product_manager"}
+    test7 = {"JobName": "字节跳动 C++岗", "Salary": "100", "Company": "C++"}
+    test8 = {"JobName": "字节跳动 产品经理", "Salary": "200", "Company": "product_manager"}
+    test9 = {"JobName": "字节跳动 C++岗", "Salary": "100", "Company": "C++"}
+    test10 = {"JobName": "字节跳动 产品经理", "Salary": "200", "Company": "product_manager"}
+    test11 = {"JobName": "字节跳动 C++岗", "Salary": "100", "Company": "C++"}
+    test12 = {"JobName": "字节跳动 产品经理", "Salary": "200", "Company": "product_manager"}
+    test13 = {"JobName": "字节跳动 C++岗", "Salary": "100", "Company": "C++"}
+    test14 = {"JobName": "字节跳动 产品经理", "Salary": "200", "Company": "product_manager"}
     test = "f\nf"
 
     list = [test1,test2,test3,test4,test5,test6,test7,test8,test9,test10,test11,test12,test13,test14,]
@@ -95,3 +95,11 @@ def load_phone(request):
 def stu_personal_page(request):
     student = {"PhoneNum":"13810874508","Password":"123456","SchoolInfo":"北京工业大学","Skills":"C++,Python","InternshipJob":"爸爸"}
     return render(request,'stu_personal_page.html',{"item":student})
+
+def job_detail_page(request,JobName):
+    job = {"id":"1","JobName":"阿里云JAVA后台实习","JobInfo":"第一行\n第二行\n第三行","Company":"C++","Skills":"111\n222\n333\n444\n555\n666",
+           "ContactInfo":"13810874508","Adress":"北京.朝阳区.望京","Salary":"400","RecCode":"12345"}
+    print(JobName)
+
+
+    return render(request,'job_detail.html',{"item":job})
