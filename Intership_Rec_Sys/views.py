@@ -61,7 +61,7 @@ def main_page(request):
             # 如果请求的页数不在合法的页数范围内，返回结果的最后一页。
             l = paginator.page(paginator.num_pages)
 
-    return render(request,'main_page.html', {"items": l, "pho_num":"111111", "test":test})
+    return render(request,'main_page.html', {"items": l, "pho_num":"13810874508", "test":test})
 
 def bole_reg(request):
     return render(request,'bole_register.html')
@@ -103,3 +103,20 @@ def job_detail_page(request,JobName):
 
 
     return render(request,'job_detail.html',{"item":job})
+
+def recommend_data_form(request):
+    student = {"skills":"C++,JAVA"}
+    return render(request,'recommend_data_form.html',{"item":student})
+
+def recommend_page(request):
+    job1 = {"jobName": "阿里云JAVA后台实习", "jobInfo": "第一行\n第二行\n第三行", "company": "JAVA",
+           "skills": "111\n222\n333\n444\n555\n666",
+           "contactInfo": "13810874508", "adress": "北京.朝阳区.望京", "salary": "400", "recCode": "12345"}
+    job2 = {"jobName": "阿里云C++后台实习", "jobInfo": "第一行\n第二行\n第三行", "company": "C++",
+           "skills": "111\n222\n333\n444\n555\n666",
+           "contactInfo": "13810874508", "adress": "北京.朝阳区.望京", "salary": "500", "recCode": "12345"}
+    job3 = {"jobName": "阿里云python后台实习", "jobInfo": "第一行\n第二行\n第三行", "company": "Python",
+           "skills": "111\n222\n333\n444\n555\n666",
+           "contactInfo": "13810874508", "adress": "北京.朝阳区.望京", "salary": "600", "recCode": "12345"}
+    list = [job1,job2,job3]
+    return render(request,'recommend_page.html',{"items":list})

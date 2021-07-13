@@ -47,5 +47,9 @@ urlpatterns = [
     #详情页面
     path('job_detail/<JobName>/',views.job_detail_page),
     # path('job_detail/',views.job_detail_page),
+    #推荐系统信息填写表单
+    path('recommend_data_form/',views.recommend_data_form),
+    #推荐系统页面
+    path('recommend_page/',views.recommend_page),
 ]+ static("/",document_root = "./templates")
 urlpatterns += staticfiles_urlpatterns()
