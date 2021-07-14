@@ -67,5 +67,11 @@ urlpatterns = [
 
     #详情页面
     path('job_detail/<JobName>/',views.job_detail_page),
+    #修改岗位信息
+    path('revise_job/<JobName>/',views.revise_job),
+    #提交修改岗位信息
+    path('revise_job/<JobName>/change_job_info/',views.change_job_info),
+    #删除岗位信息
+    path('myJob/delete_job/',views.jump_delete_job),
 ]+ static("/",document_root = "./templates")
 urlpatterns += staticfiles_urlpatterns()

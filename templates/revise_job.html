@@ -52,7 +52,7 @@
       <nav id="navbar" class="nav-menu navbar">
         <ul>
           <li><a href="#about" class="nav-link scrollto active"><i class="bx bx-user"></i> <span>岗位介绍</span></a></li>
-          <li><a href="/bole_main_page/" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>返回主页</span></a></li>
+          <li><a href="/myJob/" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>返回我的岗位</span></a></li>
 
         </ul>
       </nav><!-- .nav-menu -->
@@ -91,6 +91,29 @@
                   <li><i class="bi bi-chevron-right"></i> <strong>联系方式:</strong> <span>{{ item.ContactInfo }}</span></li>
                   <li><i class="bi bi-chevron-right"></i> <strong>地址:</strong> <span>{{ item.Adress }}</span></li>
                   <li><i class="bi bi-chevron-right"></i> <strong>日薪:</strong> <span>￥{{ item.Salary }}</span></li>
+                  <form id="form" class="form">
+                    {% csrf_token %}
+                    <div class="form-control">
+                        <label for="school">岗位名称:</label>
+                        <input type="text" id="JobName" name = "school" value="{{item.JobName}}">
+                    </div>
+                    <div class="form-control">
+                        <label for="school">单位:</label>
+                        <input type="text" id="Company" name = "school" value="{{item.Company}}">
+                    </div>
+                    <div class="form-control">
+                        <label for="skills">地址:</label>
+                        <input type="text" id="Address" value="{{item.Address}}" />
+                    </div>
+          
+                    <div class="form-control">
+                        <label for="job">日薪:</label>
+                        <input type="text" id="Salary" name = "job" value="{{item.Salary}}">
+                    </div>
+                    <div class="change_info">
+                      <input type="button" class="btn btn-default change_info_btn " value="确认提交" id="change_job_info"><span class="error"></span>
+                    </div>
+                  </form>
                 </ul>
               </div>
             </div>
@@ -176,6 +199,7 @@
 
   <!-- Template Main JS File -->
   <script src="../../static/iPortfolio Bootstrap Template - Index_files/main.js"></script>
+  <script src="/static/jquery-3.2.1.min.js"></script>
   <style type="text/css" data-typed-js-css="true">
         .typed-cursor{
           opacity: 1;
@@ -195,6 +219,33 @@
         }
       </style>
 
+  <script>
+    $("#change_job_info").click(function () {//提交内推码按钮
+      $.ajax({
+        url: "change_job_info/",
+        type: "post",
+        data: {
+          JobName: $("#JobName").val(),
+          Company: $("#Company").val(),
+          Address: $("#Address").val(),
+          Salary: $("#Salary").val(),
+        },
+        success: function (data) {
+          console.log(data);
+          if (data.msg == '修改成功') {
+              alert(data.msg)
+            //   location.href = "/myJob/"
+          }
+          else{
+              alert(data.msg)
+          }
+        }
+
+
+      })
+    })
+
+  </script>
 
 
 </body>

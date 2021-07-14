@@ -1,11 +1,11 @@
 <!DOCTYPE html>
+<!--{% load static %}-->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>欢迎登陆实习岗位推荐系统</title>
-<!--    <link rel="stylesheet" href="/static/bootstrap.css">-->
+<!--    <link rel="stylesheet" href="{% static '../static/forStudentRegister.css' %}" />-->
     <style type="text/css">
         @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
 
@@ -105,7 +105,8 @@
             visibility: visible;
         }
 
-        #submit_button {
+
+        .form button {
             cursor: pointer;
             background-color: #3498db;
             border: 2px solid #3498db;
@@ -118,6 +119,63 @@
             width: 100%;
         }
 
+        #submit_button {
+            margin-bottom: 10px;
+            padding-bottom: 20px;
+            position: relative;
+            background-color: #3498db;
+            border: 2px solid #3498db;
+            color: #fff;
+
+        }
+
+        #back{
+
+            text-decoration: underline;
+            width:300px;
+            height:50px;
+            line-height: 50px;
+            text-align: center;
+            letter-spacing: .3rem;
+            font-size: 16px;
+            font-style: italic;
+            display: block;
+            margin:20px auto;
+            border:none;
+            color:black;
+            -webkit-border-radius: 20px;
+            -moz-border-radius: 20px;
+            -o-border-radius: 20px;
+            border-radius: 20px;
+            -webkit-transition:background .8s;
+            -moz-transition:background .8s;
+            -o-transition:background .8s;
+            transition:background .8s;
+        }
+
+        #back_button {
+            margin-bottom: 10px;
+            padding-bottom: 20px;
+            position: relative;
+            background-color: #bcc9d2;
+            border: 2px solid #bcc9d2;
+            color: #685e5e;
+        }
+        /*
+        .form button {
+            cursor: pointer;
+            background-color: #bcc9d2;
+            border: 2px solid #bcc9d2;
+            border-radius: 4px;
+            color: #685e5e;
+            display: block;
+            font-size: 16px;
+            padding: 10px;
+            margin-top: 20px;
+            width: 100%;
+        }
+        */
+        /*
         h1{
             color: rgba(0, 0, 0, 0.6);
             position: fixed;
@@ -126,11 +184,34 @@
             width: 100%;
             font-size: 50px;
         }
-
+        */
         img{
             position: fixed;
             top: 0px;
             left: 0px;
+        }
+
+        #facelogin{
+            text-decoration: underline;
+            width:300px;
+            height:50px;
+            line-height: 50px;
+            text-align: center;
+            letter-spacing: .3rem;
+            font-size: 16px;
+            font-style: italic;
+            display: block;
+            margin:20px auto;
+            border:none;
+            color:black;
+            -webkit-border-radius: 20px;
+            -moz-border-radius: 20px;
+            -o-border-radius: 20px;
+            border-radius: 20px;
+            -webkit-transition:background .8s;
+            -moz-transition:background .8s;
+            -o-transition:background .8s;
+            transition:background .8s;
         }
 
         .copyright
@@ -151,142 +232,45 @@
             left:0;
 
         }
-
-        #for_stu_reg{
-            float:left;
-            text-decoration: underline;
-            width:48%;
-            height:50px;
-            line-height: 50px;
-            text-align: center;
-            letter-spacing: .3rem;
-            font-size: 16px;
-            font-style: italic;
-            display: block;
-            margin:20px auto;
-            border:none;
-            color:black;
-            -webkit-border-radius: 20px;
-            -moz-border-radius: 20px;
-            -o-border-radius: 20px;
-            border-radius: 20px;
-            -webkit-transition:background .8s;
-            -moz-transition:background .8s;
-            -o-transition:background .8s;
-            transition:background .8s;
-            background-color: #ffffff;
-        }
-
-        #for_bole_reg{
-            float: left;
-            text-decoration: underline;
-            width:48%;
-            height:50px;
-            line-height: 50px;
-            text-align: center;
-            letter-spacing: .3rem;
-            font-size: 16px;
-            font-style: italic;
-            display: block;
-            margin:20px auto;
-            border:none;
-            color:black;
-            -webkit-border-radius: 20px;
-            -moz-border-radius: 20px;
-            -o-border-radius: 20px;
-            border-radius: 20px;
-            -webkit-transition:background .8s;
-            -moz-transition:background .8s;
-            -o-transition:background .8s;
-            transition:background .8s;
-            background-color: #ffffff;
-        }
     </style>
+    <title>欢迎使用实习岗位推荐系统</title>
 </head>
 <body>
-<h1>欢迎使用实习推荐岗位系统</h1>
 <div class="container">
     <form id="form" class="form">
         {% csrf_token %}
+        <h2>学生账号注册</h2>
         <div class="form-control">
-            <label id="ser">请输入您的身份：</label>
-<!--            <select name="type" size="行数" id="sertype">-->
-<!--                <option value="student" id="stu">学生</option>-->
-<!--                <option value="bole" id="bole">伯乐</option>-->
-<!--            </select>-->
-            <input type="text" id="sertype"  placeholder="学生/伯乐">
+            <label for="username">用户名:</label>
+            <input type="text" id="username" name="username" placeholder="用户名" />
+            <small>Error message</small>
         </div>
         <div class="form-control">
             <label for="phone">手机号:</label>
-            <input type="text" id="phone" name = "phone" placeholder="注册手机号">
+            <input type="text" id="phone" name="phone" placeholder="手机号"/>
+            <small>Error message</small>
         </div>
         <div class="form-control">
             <label for="password">密码:</label>
-            <input type="password" id="password" placeholder="注册密码" />
+            <input type="password" id="password" name="password" placeholder="密码" />
+            <small>Error message</small>
         </div>
+
+        <div class="form-control">
+            <label for="school">学校:</label>
+            <input type="text" id="school" name="school" placeholder="学校"/>
+            <small>Error message</small>
+        </div>
+
         <div class="submit_button">
-            <input type="button" class="btn btn-default login_btn" value="submit" id="submit_button"><span class="error"></span>
+            <button type="submit" id="submit_button">提交</button>
         </div>
     </form>
-    <input type="button" class="btn btn-default stu_reg_btn" value="学生注册" id="for_stu_reg"><span class="error"></span>
-    <input type="button" class="btn btn-default bole_reg_btn" value="伯乐注册" id="for_bole_reg"><span class="error"></span>
+    <a href="/login.html/" id="back">返回</a>
+
 </div>
-
-
-
 <script src="/static/jquery-3.2.1.min.js"></script>
 <script>
-    // 登录验证
-    $(".login_btn").click(function () {
-        $.ajax({
-            url: "index/login/",
-            type: "post",
-            data: {
-                type:$("#sertype").val(),
-                phone: $("#phone").val(),
-                pwd: $("#password").val(),
-            },
-            success: function (data) {
-                console.log(data);
-                if (data.msg == '学生成功登陆') {
-                    location.href = "main_page.html/"
-                }
-                else if (data.msg == '伯乐登陆成功'){
-                    location.href = "main_page.html/"
-                }
-                else{
-                    alert(data.msg)
-                }
-            }
-        })
-
-    })
-
-    $(".stu_reg_btn").click(function (){
-        $.ajax({
-            url: "jump_stu_reg/",
-            type: "post",
-            success: function (data) {
-                if (data.msg == 'jump') {
-                    location.href = "/stu_register/"
-                }
-            }
-
-        })
-    })
-
-    $(".bole_reg_btn").click(function (){
-        $.ajax({
-            url: "jump_bole_reg/",
-            type: "post",
-            success: function (data) {
-                if (data.msg == 'jump') {
-                    location.href = "/bole_register/"
-                }
-            }
-
-        })
-    })
 
 </script>
 </body>

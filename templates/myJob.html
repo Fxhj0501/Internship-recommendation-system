@@ -62,25 +62,28 @@
   <div class="container px-4 px-lg-5 mt-5">
     <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
       <!--                    第1行-->
+
       {% for item in items %}
       <div class="col mb-5">
         <div class="card h-100">
           <!-- Product image-->
-          <img class="card-img-top" src="../static/logo/C++.jpg" alt="..." />
+          <img class="card-img-top" src="../static/logo/{{ item.Company }}.jpg" alt="..." />
           <!-- Product details-->
           <div class="card-body p-4">
             <div class="text-center">
               <!-- Product name-->
-              <h5 class="fw-bolder">{{item.name}}</h5>
+              <h5 class="fw-bolder" id="JobName">{{item.JobName}}</h5>
               <!-- Product price-->
-              ￥{{item.salary}}
+              ￥{{item.Salary}}
             </div>
           </div>
           <!-- Product actions-->
           <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-            <div class="text-center"> 
-                <input type="button" class="btn btn-outline-dark mt-auto" value="修改" id="revise_job"><span class="error"></span>
-                <input type="button" class="btn btn-outline-dark mt-auto" value="删除" id="delete_job"><span class="error"></span>
+            <div class="text-center">
+                <a class="btn btn-outline-dark mt-auto" href="/revise_job/{{ item.JobName }}/">修改</a>
+                <a class="btn btn-outline-dark mt-auto" id="delete_job">删除</a>
+                <!-- <input type="button" class="btn btn-outline-dark mt-auto" value="修改" id="revise_job"><span class="error"></span>
+                <input type="button" class="btn btn-outline-dark mt-auto" value="删除" id="delete_job"><span class="error"></span> -->
             </div>
           </div>
         </div>
@@ -105,23 +108,7 @@
 
 <script>
 
-$(document).ready(function(){
-    $.ajax({
-        url: "test/",
-        type: "post",
-        data:{
-            phone_num:""
-        },
-        success: function (data) {
-        alert("OK")
-            if (data.msg == 'jump') {
-                location.href = "/bole_main_page/"
-            }
-        }
 
-
-    })
-})
 
 $("#main_page").click(function (){//首页按钮
         $.ajax({
@@ -188,6 +175,28 @@ $("#main_page").click(function (){//首页按钮
             }
 
         })
+    })
+
+    $("#delete_job").click(function () {//提交内推码按钮
+      $.ajax({
+        url: "delete_job/",
+        type: "post",
+        data: {
+          JobName: $("#JobName").val(),
+        },
+        success: function (data) {
+          console.log(data);
+          if (data.msg == '修改成功') {
+              alert(data.msg)
+            //   location.href = "/myJob/"
+          }
+          else{
+              alert(data.msg)
+          }
+        }
+
+
+      })
     })
 </script>
 </body>
