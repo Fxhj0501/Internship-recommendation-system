@@ -22,13 +22,12 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
         <!-- <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">首页</a></li> -->
-        <input type="button" class="nav-item" value="首页" id="main_page"><span class="error"></span>
-        <!-- <li class="nav-item"><a class="nav-link" id="search">岗位搜索</a></li>
-        <li class="nav-item"><a class="nav-link" id="myJob">我的岗位信息</a></li>
-        <li class="nav-item"><a class="nav-link" id="postCode">发布内推码</a></li> -->
-        <input type="button" class="nav-item" value="岗位搜索" id="search"><span class="error"></span>
-        <input type="button" class="nav-item" value="我的岗位信息" id="myJob"><span class="error"></span>
-        <input type="button" class="nav-item" value="发布内推码" id="postCode"><span class="error"></span>
+
+        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/bole_main_page/">首页</a></li>
+        <li class="nav-item"><a class="nav-link" href="/myJob/">我的岗位信息</a></li>
+        <li class="nav-item"><a class="nav-link" href="/postCode/">发布内推码</a></li>
+        <li class="nav-item"><a class="nav-link" href="/bole_personal_page/">个人主页:{{ pho_num }}</a></li>
+        <li class="nav-item"><a class="nav-link" href="/">退出登录</a></li>
         <!--                        <li class="nav-item dropdown">-->
         <!--                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>-->
         <!--                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">-->
@@ -39,13 +38,13 @@
         <!--                            </ul>-->
         <!--                        </li>-->
       </ul>
-      <form class="d-flex">
+      <!-- <form class="d-flex">
         <button class="btn btn-outline-dark" type="submit" id="personal_page">
-          <!--                            <i class="bi-cart-fill me-1"></i>-->
+        
           <p>用户：{{pho_num}}</p>
-          <!--                            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>-->
+     
         </button>
-      </form>
+      </form> -->
     </div>
   </div>
 </nav>
@@ -67,19 +66,19 @@
       <div class="col mb-5">
         <div class="card h-100">
           <!-- Product image-->
-          <img class="card-img-top" src="../static/logo/C++.jpg" alt="..." />
+          <img class="card-img-top" src="../static/logo/{{ item.Company }}.jpg" alt="..." />
           <!-- Product details-->
           <div class="card-body p-4">
             <div class="text-center">
               <!-- Product name-->
-              <h5 class="fw-bolder">{{item.name}}</h5>
+              <h5 class="fw-bolder">{{item.JobName}}</h5>
               <!-- Product price-->
-              ￥{{item.salary}}
+              ￥{{item.Salary}}
             </div>
           </div>
           <!-- Product actions-->
           <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">详情</a></div>
+            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="/job_detail/{{ item.JobName }}/">详情</a></div>
           </div>
         </div>
 
@@ -88,7 +87,25 @@
       </div>
       {% endfor%}
     </div>
+    <p style="white-space: pre-line;">{{test}}</p>
+    <div id="pages" class="text-center" >
+       <nav>
+           <ul class="pagination">
+               <li class="step-links">
+               {% if items.has_previous %}
+                   <a class='active' href="?page={{ books.previous_page_number }}">上一页</a>
+               {% endif %}
 
+               <span class="current">
+                   Page {{ items.number }} of {{ items.paginator.num_pages }}</span>
+
+               {% if items.has_next %}
+                   <a class='active' href="?page={{ items.next_page_number }}">下一页</a>
+               {% endif %}
+               </li>
+           </ul>
+       </nav>
+     </div>
   </div>
 </section>
 <!-- Footer-->
@@ -103,20 +120,20 @@
 
 <script>
 
-$("#main_page").click(function (){//首页按钮
-        $.ajax({
-            url: "jump_bole_main/",
-            type: "post",
-            success: function (data) {
-              alert("OK")
-                if (data.msg == 'jump') {
-                    location.href = "/bole_main_page/"
-                }
-            }
+// $("#main_page").click(function (){//首页按钮
+//         $.ajax({
+//             url: "jump_bole_main/",
+//             type: "post",
+//             success: function (data) {
+//               alert("OK")
+//                 if (data.msg == 'jump') {
+//                     location.href = "/bole_main_page/"
+//                 }
+//             }
 
 
-        })
-    })
+//         })
+//     })
 
   $("#search").click(function (){//搜索岗位跳转
         $.ajax({
@@ -131,44 +148,44 @@ $("#main_page").click(function (){//首页按钮
         })
     })
 
-    $("#myJob").click(function (){//查看自己发布的岗位跳转
-        $.ajax({
-            url: "jump_myJob/",
-            type: "post",
-            success: function (data) {
-                if (data.msg == 'jump') {
-                    location.href = "/myJob/"
-                }
-            }
+    // $("#myJob").click(function (){//查看自己发布的岗位跳转
+    //     $.ajax({
+    //         url: "jump_myJob/",
+    //         type: "post",
+    //         success: function (data) {
+    //             if (data.msg == 'jump') {
+    //                 location.href = "/myJob/"
+    //             }
+    //         }
 
-        })
-    })
+    //     })
+    // })
 
-    $("#postCode").click(function (){//查看自己发布的岗位跳转
-        $.ajax({
-            url: "jump_main/",
-            type: "post",
-            success: function (data) {
-                if (data.msg == 'jump') {
-                    location.href = "/postCode/"
-                }
-            }
+    // $("#postCode").click(function (){//查看自己发布的岗位跳转
+    //     $.ajax({
+    //         url: "jump_main/",
+    //         type: "post",
+    //         success: function (data) {
+    //             if (data.msg == 'jump') {
+    //                 location.href = "/postCode/"
+    //             }
+    //         }
 
-        })
-    })
+    //     })
+    // })
 
-    $("#personal_page").click(function (){//个人主页岗位跳转
-        $.ajax({
-            url: "jump_main/",
-            type: "post",
-            success: function (data) {
-                if (data.msg == 'jump') {
-                    location.href = "/personal_page.html/"
-                }
-            }
+    // $("#personal_page").click(function (){//个人主页岗位跳转
+    //     $.ajax({
+    //         url: "jump_bole_personal/",
+    //         type: "post",
+    //         success: function (data) {
+    //             if (data.msg == 'jump') {
+    //                 location.href = "/bole_personal_page/"
+    //             }
+    //         }
 
-        })
-    })
+    //     })
+    // })
 </script>
 </body>
 </html>
