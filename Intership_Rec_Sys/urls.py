@@ -42,10 +42,15 @@ urlpatterns = [
     path('postCode/',views.postCode),
     #加载我的岗位--csq
     path('myJob/',views.myJob),
+    #加载伯乐个人主页
+    path('bole_personal_page/',views.bole_personal_page),
+
     #伯乐主页跳转到内推码提交页
     path('bole_main_page/jump_main/',views.jump_postCode),
     #伯乐主页跳转到我的岗位
     path('bole_main_page/jump_myJob/',views.jump_myJob),
+    #伯乐主页跳转到个人主页
+    path('bole_main_page/jump_bole_personal/',views.jump_bole_personal),
 
     #提交内推码跳转到伯乐主页
     path('postCode/jump_bole_main/',views.jump_bole_main),
@@ -56,8 +61,11 @@ urlpatterns = [
     path('myJob/jump_bole_main/',views.jump_bole_main),
     #我的岗位跳转到发布内推码
     path('myJob/jump_main/',views.jump_postCode),
-    
+
     #提交内推码
-    path('postCode/submit_code/',views.submit_code)
+    path('postCode/submit_code/',views.submit_code),
+
+    #详情页面
+    path('job_detail/<JobName>/',views.job_detail_page),
 ]+ static("/",document_root = "./templates")
 urlpatterns += staticfiles_urlpatterns()

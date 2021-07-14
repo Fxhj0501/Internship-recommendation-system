@@ -1,6 +1,8 @@
 from django.shortcuts import render
 import json
 from django.http import JsonResponse,HttpResponse
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage, InvalidPage
+
 def home(request):
     return render(request,'login.html')
 
@@ -20,14 +22,45 @@ def main_page(request):
     return render(request,'main_page.html')
 
 def bole_main_page(request):
-    print("hit")
-    test1 = { "name":"giao岗", "salary" : "1个亿"}
-    test2 = {"name": "蚌埠住了", "salary": "2个亿"}
-    test3 = { "name":"giao岗", "salary" : "1个亿"}
-    test4 = {"name": "蚌埠住了", "salary": "2个亿"}
-    test5 = {"name": "蚌埠住了", "salary": "2个亿"}
-    list = [test1,test2,test3,test4,test5]
-    return render(request,'bole_main_page.html', {"items": list, "pho_num":"123456"})
+    #print("hit")
+
+    test1 = { "JobName":"字节跳动 C++岗", "Salary" : "100","Company" : "C++"}
+    test2 = {"JobName": "字节跳动 产品经理", "Salary": "200","Company" : "product_manager"}
+    test3 = {"JobName": "字节跳动 C++岗", "Salary": "100", "Company": "C++"}
+    test4 = {"JobName": "字节跳动 产品经理", "Salary": "200", "Company": "product_manager"}
+    test5 = {"JobName": "字节跳动 C++岗", "Salary": "100", "Company": "C++"}
+    test6 = {"JobName": "字节跳动 产品经理", "Salary": "200", "Company": "product_manager"}
+    test7 = {"JobName": "字节跳动 C++岗", "Salary": "100", "Company": "C++"}
+    test8 = {"JobName": "字节跳动 产品经理", "Salary": "200", "Company": "product_manager"}
+    test9 = {"JobName": "字节跳动 C++岗", "Salary": "100", "Company": "C++"}
+    test10 = {"JobName": "字节跳动 产品经理", "Salary": "200", "Company": "product_manager"}
+    test11 = {"JobName": "字节跳动 C++岗", "Salary": "100", "Company": "C++"}
+    test12 = {"JobName": "字节跳动 产品经理", "Salary": "200", "Company": "product_manager"}
+    test13 = {"JobName": "字节跳动 C++岗", "Salary": "100", "Company": "C++"}
+    test14 = {"JobName": "字节跳动 产品经理", "Salary": "200", "Company": "product_manager"}
+    test = "f\nf"
+
+    list = [test1,test2,test3,test4,test5,test6,test7,test8,test9,test10,test11,test12,test13,test14,]
+    #test=[1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0]
+    paginator = Paginator(list, 12)
+
+    if request.method == "GET":
+        # 获取 url 后面的 page 参数的值, 首页不显示 page 参数, 默认值是 1
+        page = request.GET.get('page')
+        try:
+            l = paginator.page(page)
+        # todo: 注意捕获异常
+        except PageNotAnInteger:
+            # 如果请求的页数不是整数, 返回第一页。
+            l = paginator.page(1)
+        except InvalidPage:
+            # 如果请求的页数不存在, 重定向页面
+            return HttpResponse('找不到页面的内容')
+        except EmptyPage:
+            # 如果请求的页数不在合法的页数范围内，返回结果的最后一页。
+            l = paginator.page(paginator.num_pages)
+
+    return render(request,'bole_main_page.html', {"items": l, "pho_num":"111111", "test":test})
 
 def bole_reg(request):
     return render(request,'bole_register.html')
@@ -60,17 +93,36 @@ def jump_myJob(request):
     response['msg'] = 'jump'
     return JsonResponse(response)  
 
+def jump_bole_personal(request):
+    response = {'msg':None}
+    response['msg'] = 'jump'
+    return JsonResponse(response) 
+
 def postCode(request):
     print("heat")
     return render(request,'postCode.html',{"pho_num":"1234567"})
 
 def myJob(request):
     print("this is myjob")
-    return render(request,'myJob.html',{"pho_num":"12345678"}) 
+    test1 = { "name":"字节跳动 C++开发岗 ", "salary" : "2000"}
+    test2 = {"name": "字节跳动 Java开发岗", "salary": "8000"}
+    list = [test1,test2]
+    return render(request,'myJob.html',{"items": list,"pho_num":"12345678"}) 
 
 def submit_code(request):
     code=request.POST.get("code")
     response = {'msg':None}
-    response['msg'] = code
+    response['msg'] = '提交成功'
     return JsonResponse(response) 
 
+def bole_personal_page(request):
+    bole = {"PhoneNum":"13810874508","Password":"123456","CompanyInfo":"字节跳动","Job":"前端开发岗","Code":"12345677"}
+    return render(request,'bole_personal_page.html',{"item":bole})
+
+def job_detail_page(request,JobName):
+    job = {"id":"1","JobName":"阿里云JAVA后台实习","JobInfo":"第一行\n第二行\n第三行","Company":"C++","Skills":"111\n222\n333\n444\n555\n666",
+           "ContactInfo":"13810874508","Adress":"北京.朝阳区.望京","Salary":"400","RecCode":"12345"}
+    print(JobName)
+
+
+    return render(request,'job_detail.html',{"item":job})
