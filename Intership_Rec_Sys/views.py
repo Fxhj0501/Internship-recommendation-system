@@ -108,10 +108,10 @@ def myJob(request):
     test2 = {"JobName": "字节跳动 产品经理", "Salary": "200","Company" : "product_manager"}
     test3 = {"JobName": "字节跳动 C++岗", "Salary": "100", "Company": "C++"}
     test4 = {"JobName": "字节跳动 产品经理", "Salary": "200", "Company": "product_manager"}
-
+    test5 = {"JobName": "字节跳动 产品经理", "Salary": "200", "Company": "product_manager"}
     test = "f\nf"
 
-    list = [test1,test2,test3,test4,]
+    list = [test1,test2,test3,test4,test5]
     #test=[1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0]
     paginator = Paginator(list, 12)
 
@@ -164,9 +164,11 @@ def change_job_info(request,JobName):
     Company=request.POST.get("Company")
     Address=request.POST.get("Address")
     Salary=request.POST.get("Salary")
-    print(JobName)
+    JobInfo=request.POST.get("JobInfo")
+    Skills=request.POST.get("Skills")
+    RecCode=request.POST.get("RecCode")
     response = {'msg':None}
-    response['msg'] = name
+    response['msg'] = Skills
     return JsonResponse(response) 
 
 def delete_job(request):
@@ -204,4 +206,20 @@ def jump_delete_job(request):
     name=request.POST.get("JobName")
     response = {'msg':None}
     response['msg'] = name
+    return JsonResponse(response) 
+
+def addJob(request):
+    print("heat")
+    return render(request,'addJob.html')
+
+def add_job_info(request):
+    name=request.POST.get("JobName")
+    Company=request.POST.get("Company")
+    Address=request.POST.get("Address")
+    Salary=request.POST.get("Salary")
+    JobInfo=request.POST.get("JobInfo")
+    Skills=request.POST.get("Skills")
+    RecCode=request.POST.get("RecCode")
+    response = {'msg':None}
+    response['msg'] = Salary
     return JsonResponse(response) 
