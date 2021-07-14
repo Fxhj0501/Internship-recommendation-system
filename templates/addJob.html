@@ -51,7 +51,7 @@
 
       <nav id="navbar" class="nav-menu navbar">
         <ul>
-          <li><a href="#about" class="nav-link scrollto active"><i class="bx bx-user"></i> <span>岗位介绍</span></a></li>
+          <li><a href="#about" class="nav-link scrollto active"><i class="bx bx-user"></i> <span>岗位添加</span></a></li>
           <li><a href="/myJob/" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>返回我的岗位</span></a></li>
 
         </ul>
@@ -74,7 +74,7 @@
       <div class="container">
 
         <div class="section-title">
-          <h2>岗位信息修改</h2>
+          <h2>岗位信息添加</h2>
 <!--          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>-->
         </div>
 
@@ -95,23 +95,23 @@
                     {% csrf_token %}
                     <div class="form-control">
                         <label for="school">岗位名称:</label>
-                        <input type="text" id="JobName" name = "school" value="{{item.JobName}}">
+                        <input type="text" id="JobName" name = "school" value="">
                     </div>
                     <div class="form-control">
                         <label for="school">单位:</label>
-                        <input type="text" id="Company" name = "school" value="{{item.Company}}">
+                        <input type="text" id="Company" name = "school" value="">
                     </div>
                     <div class="form-control">
                         <label for="skills">地址:</label>
-                        <input type="text" id="Address" value="{{item.Address}}" />
+                        <input type="text" id="Address" value="" />
                     </div>
                     <div class="form-control">
                       <label for="skills">联系方式:</label>
-                      <input type="text" id="Contact" value="{{item.ContactInfo}}" />
+                      <input type="text" id="Contact" value="" />
                   </div>
                     <div class="form-control">
                         <label for="job">日薪:</label>
-                        <input type="text" id="Salary" name = "job" value="{{item.Salary}}">
+                        <input type="text" id="Salary" name = "job" value="">
                     </div>
                     <!-- <div class="change_info">
                       <input type="button" class="btn btn-default change_info_btn " value="确认提交" id="change_job_info"><span class="error"></span>
@@ -126,7 +126,7 @@
         <div class="row">
           <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
             <h3>岗位描述</h3>
-            <textarea rows="8" cols="120" id="JobInfo" >{{item.JobInfo}}</textarea>
+            <textarea rows="8" cols="120" id="JobInfo" ></textarea>
           </div>
         </div>
 
@@ -136,7 +136,7 @@
             <!-- <p class="fst-italic" style="white-space: pre-line;">
               {{ item.Skills }}
             </p> -->
-            <textarea rows="8" cols="120" id="Skills" >{{item.Skills}}</textarea>
+            <textarea rows="8" cols="120" id="Skills" ></textarea>
           </div>
         </div>
 
@@ -146,12 +146,12 @@
             <!-- <p class="fst-italic" style="white-space: pre-line;">
               {{ item.RecCode }}
             </p> -->
-            <textarea rows="2" cols="120" id="RecCode" >{{item.RecCode}}</textarea>
+            <textarea rows="2" cols="120" id="RecCode" ></textarea>
           </div>
         </div>
 
         <div class="change_info">
-          <input type="button" class="btn btn-default change_info_btn " value="确认修改" id="change_job_info"><span class="error"></span>
+          <input type="button" class="btn btn-default change_info_btn " value="确认添加" id="add_job_info"><span class="error"></span>
         </div>
 
       </div>
@@ -226,9 +226,9 @@
       </style>
 
   <script>
-    $("#change_job_info").click(function () {//提交内推码按钮
+    $("#add_job_info").click(function () {//提交内推码按钮
       $.ajax({
-        url: "change_job_info/",
+        url: "add_job_info/",
         type: "post",
         data: {
           JobName: $("#JobName").val(),

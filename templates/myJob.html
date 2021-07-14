@@ -81,7 +81,7 @@
           <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
             <div class="text-center">
                 <a class="btn btn-outline-dark mt-auto" href="/revise_job/{{ item.JobName }}/">修改</a>
-                <a class="btn btn-outline-dark mt-auto" id="delete_job">删除</a>
+
                 <!-- <input type="button" class="btn btn-outline-dark mt-auto" value="修改" id="revise_job"><span class="error"></span>
                 <input type="button" class="btn btn-outline-dark mt-auto" value="删除" id="delete_job"><span class="error"></span> -->
             </div>
@@ -92,6 +92,33 @@
 
       </div>
       {% endfor%}
+      
+      <div class="col mb-5">
+        <div class="card h-100">
+
+          <!-- <img class="card-img-top" src="../static/logo/{{ item.Company }}.jpg" alt="..." /> -->
+          <!-- Product details-->
+          <div class="card-body p-4">
+            <div class="text-center">
+
+              <h5 class="fw-bolder" >请添加您想提交的岗位信息</h5>
+
+            </div>
+          </div>
+          <!-- Product actions-->
+          <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+            <div class="text-center">
+                <a class="btn btn-outline-dark mt-auto" href="/addJob/">添加</a>
+
+                <!-- <input type="button" class="btn btn-outline-dark mt-auto" value="修改" id="revise_job"><span class="error"></span>
+                <input type="button" class="btn btn-outline-dark mt-auto" value="删除" id="delete_job"><span class="error"></span> -->
+            </div>
+          </div>
+        </div>
+
+
+
+      </div>
     </div>
 
   </div>
