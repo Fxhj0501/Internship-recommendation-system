@@ -51,5 +51,11 @@ urlpatterns = [
     path('recommend_data_form/',views.recommend_data_form),
     #推荐系统页面
     path('recommend_page/',views.recommend_page),
+    #岗位搜索页面
+    path('stu_search_page/',views.stu_search_page),
+    #提交搜索信息
+    path('stu_search_page/submit_search/',views.submit_search),
+    #加载搜索
+    path('reload_search/',views.reload_search),
 ]+ static("/",document_root = "./templates")
 urlpatterns += staticfiles_urlpatterns()

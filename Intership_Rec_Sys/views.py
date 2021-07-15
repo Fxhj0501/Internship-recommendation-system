@@ -120,3 +120,44 @@ def recommend_page(request):
            "contactInfo": "13810874508", "adress": "北京.朝阳区.望京", "salary": "600", "recCode": "12345"}
     list = [job1,job2,job3]
     return render(request,'recommend_page.html',{"items":list})
+
+def stu_search_page(request):
+    return render(request,'stu_search_page.html',{"pho_num":"111111"})
+
+
+def submit_search(request):
+    search_info=request.POST.get("search_info")
+    response = {'msg':None}
+    response['msg'] = "提交成功"
+    return JsonResponse(response)
+
+def reload_search(request):
+
+    test1 = { "JobName":"字节跳动 C++岗", "Salary" : "100","Company" : "C++"}
+    test2 = {"JobName": "字节跳动 产品经理", "Salary": "200","Company" : "product_manager"}
+    test3 = {"JobName": "字节跳动 C++岗", "Salary": "100", "Company": "C++"}
+
+
+    test = "f\nf"
+
+    list = [test1,test2,test3,]
+    #test=[1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0]
+    paginator = Paginator(list, 12)
+
+    if request.method == "GET":
+        # 获取 url 后面的 page 参数的值, 首页不显示 page 参数, 默认值是 1
+        page = request.GET.get('page')
+        try:
+            l = paginator.page(page)
+        # todo: 注意捕获异常
+        except PageNotAnInteger:
+            # 如果请求的页数不是整数, 返回第一页。
+            l = paginator.page(1)
+        except InvalidPage:
+            # 如果请求的页数不存在, 重定向页面
+            return HttpResponse('找不到页面的内容')
+        except EmptyPage:
+            # 如果请求的页数不在合法的页数范围内，返回结果的最后一页。
+            l = paginator.page(paginator.num_pages)
+
+    return render(request,'stu_search_page.html', {"items": l, "pho_num":"111111", "test":test})

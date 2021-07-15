@@ -65,11 +65,21 @@
   <div class="container px-4 px-lg-5 my-5">
     <div class="text-center text-white">
       <h1 class="display-4 fw-bolder">实习岗位推荐系统</h1>
-      <p class="lead fw-normal text-white-50 mb-0">主页</p>
+      <p class="lead fw-normal text-white-50 mb-0">岗位搜索</p>
     </div>
   </div>
 </header>
 <!-- Section-->
+<form role="form">
+    <div class="form-group">
+      <label for="search_info">搜索您想查找的岗位</label>
+      <input type="text" class="form-control" id="search_info" placeholder="请输入关键字，如C++、单位名称等">
+    </div>
+
+
+    <button type="submit" class="btn btn-default" id="submit_search">提交</button>
+  </form>
+
 <section class="py-5">
 
   <div class="container px-4 px-lg-5 mt-5">
@@ -133,49 +143,27 @@
 <script src="/static/jquery-3.2.1.min.js"></script>
 
 <script>
-  // $("#personal_page").on(function (){
-  //   $.ajax({
-  //      url : "personal_account/",//请求地址
-  //      dataType : "json",//数据格式
-  //      type : "post",//请求方式
-  //      // async : false,//是否异步请求
-  //      success : function(data) {   //如何发送成功
-  //      // var html = "";
-  //      // for(var i=0;i<data.msg.length;i++){    //遍历data数组
-  //      //         var ls = data[i];
-  //      //         html +="<li><a href='second page text.html?newsid="+ls.news_id+"'class='infNews_wrod_a'><span>"+ls.news_name+"</span></a><span class='date'>"+ls.news_time+"</span></li>";
-  //      //     }
-  //          //alert("13810874508");
-  //           $("#personal_page").append("138"); //在html页面id=personal_page的标签里显示html内容
-  //      },
-  //  })
-  // })
-  // $("#main_page").click(function (){
-  //       $.ajax({
-  //           url: "jump_main/",
-  //           type: "post",
-  //           success: function (data) {
-  //             alert("OK")
-  //               if (data.msg == 'jump') {
-  //                   location.href = "/main_page.html/"
-  //               }
-  //           }
-  //
-  //
-  //       })
-  //   })
-  // $("#recommend").click(function (){
-  //       $.ajax({
-  //           url: "jump_main/",
-  //           type: "post",
-  //           success: function (data) {
-  //               if (data.msg == 'jump') {
-  //                   location.href = "/recommend.html/"
-  //               }
-  //           }
-  //
-  //       })
-  //   })
+    $("#submit_search").click(function () {//提交内推码按钮
+      $.ajax({
+        url: "submit_search/",
+        type: "post",
+        data: {
+          search_info: $("#search_info").val(),
+        },
+        success: function (data) {
+          console.log(data);
+          if (data.msg == '提交成功') {
+              alert(data.msg)
+              location.href = "/reload_search/"
+          }
+          else{
+              alert(data.msg)
+          }
+        }
+
+
+      })
+    })
 </script>
 </body>
 </html>
