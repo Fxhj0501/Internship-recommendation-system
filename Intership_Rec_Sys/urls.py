@@ -46,6 +46,10 @@ urlpatterns = [
     path('bole_personal_page/',views.bole_personal_page),
     #加载添加岗位信息--csq
     path('addJob/',views.addJob),
+    #加载岗位信息搜索--csq
+    path('search/',views.search),
+    #重载岗位信息搜索--csq
+    path('reload_search/',views.reload_search),
 
     #伯乐主页跳转到内推码提交页
     path('bole_main_page/jump_main/',views.jump_postCode),
@@ -77,5 +81,8 @@ urlpatterns = [
     path('myJob/delete_job/',views.jump_delete_job),
     #提交添加岗位信息
     path('addJob/add_job_info/',views.add_job_info),
+
+    #提交搜索信息
+    path('search/submit_search/',views.submit_search),
 ]+ static("/",document_root = "./templates")
 urlpatterns += staticfiles_urlpatterns()
