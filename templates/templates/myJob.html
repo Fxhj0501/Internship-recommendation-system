@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <title>实习岗位推荐系统</title>
+  <!-- Favicon-->
+  <link rel="icon" type="image/x-icon" href="../static/favicon.ico" />
+  <!-- Bootstrap icons-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+  <!-- Core theme CSS (includes Bootstrap)-->
+  <link href="../static/forMainPage.css" rel="stylesheet" />
+</head>
+<body>
+<!-- Navigation-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container px-4 px-lg-5">
+      <a class="navbar-brand" href="#!">欢迎使用</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+          <!-- <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">首页</a></li> -->
+  
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="/bole_main_page/">首页</a></li>
+          <li class="nav-item"><a class="nav-link" href="/search/">搜索岗位信息</a></li>
+          <li class="nav-item"><a class="nav-link" href="/myJob/">我的岗位信息</a></li>
+          <li class="nav-item"><a class="nav-link" href="/postCode/">发布内推码</a></li>
+          <li class="nav-item"><a class="nav-link" href="/bole_personal_page/">个人主页:{{ pho_num }}</a></li>
+          <li class="nav-item"><a class="nav-link" href="/">退出登录</a></li>
+          <!--                        <li class="nav-item dropdown">-->
+          <!--                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>-->
+          <!--                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">-->
+          <!--                                <li><a class="dropdown-item" href="#!">All Products</a></li>-->
+          <!--                                <li><hr class="dropdown-divider" /></li>-->
+          <!--                                <li><a class="dropdown-item" href="#!">Popular Items</a></li>-->
+          <!--                                <li><a class="dropdown-item" href="#!">New Arrivals</a></li>-->
+          <!--                            </ul>-->
+          <!--                        </li>-->
+        </ul>
+        <!-- <form class="d-flex">
+          <button class="btn btn-outline-dark" type="submit" id="personal_page">
+          
+            <p>用户：{{pho_num}}</p>
+       
+          </button>
+        </form> -->
+      </div>
+    </div>
+  </nav>
+<!-- Header-->
+<header class="bg-dark py-5">
+  <div class="container px-4 px-lg-5 my-5">
+    <div class="text-center text-white">
+      <h1 class="display-4 fw-bolder">实习岗位推荐系统</h1>
+      <p class="lead fw-normal text-white-50 mb-0">管理我的岗位</p>
+    </div>
+  </div>
+</header>
+<!-- Section-->
+<section class="py-5">
+  <div class="container px-4 px-lg-5 mt-5">
+    <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+      <!--                    第1行-->
+
+      {% for item in items %}
+      <div class="col mb-5">
+        <div class="card h-100">
+          <!-- Product image-->
+          <img class="card-img-top" src="../static/logo/{{ item.Company }}.jpg" alt="..." />
+          <!-- Product details-->
+          <div class="card-body p-4">
+            <div class="text-center">
+              <!-- Product name-->
+              <h5 class="fw-bolder" id="JobName">{{item.JobName}}</h5>
+              <!-- Product price-->
+              ￥{{item.Salary}}
+            </div>
+          </div>
+          <!-- Product actions-->
+          <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+            <div class="text-center">
+                <a class="btn btn-outline-dark mt-auto" href="/revise_job/{{ item.JobName }}/">修改</a>
+
+                <!-- <input type="button" class="btn btn-outline-dark mt-auto" value="修改" id="revise_job"><span class="error"></span>
+                <input type="button" class="btn btn-outline-dark mt-auto" value="删除" id="delete_job"><span class="error"></span> -->
+            </div>
+          </div>
+        </div>
+
+
+
+      </div>
+      {% endfor%}
+      
+      <div class="col mb-5">
+        <div class="card h-100">
+
+          <!-- <img class="card-img-top" src="../static/logo/{{ item.Company }}.jpg" alt="..." /> -->
+          <!-- Product details-->
+          <div class="card-body p-4">
+            <div class="text-center">
+
+              <h5 class="fw-bolder" >请添加您想提交的岗位信息</h5>
+
+            </div>
+          </div>
+          <!-- Product actions-->
+          <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+            <div class="text-center">
+                <a class="btn btn-outline-dark mt-auto" href="/addJob/">添加</a>
+
+                <!-- <input type="button" class="btn btn-outline-dark mt-auto" value="修改" id="revise_job"><span class="error"></span>
+                <input type="button" class="btn btn-outline-dark mt-auto" value="删除" id="delete_job"><span class="error"></span> -->
+            </div>
+          </div>
+        </div>
+
+
+
+      </div>
+    </div>
+
+  </div>
+</section>
+<!-- Footer-->
+<footer class="py-5 bg-dark">
+  <div class="container"><p class="m-0 text-center text-white">2018级软件综合课设 18组</p></div>
+</footer>
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<script src="js/scripts.js"></script>
+<script src="/static/jquery-3.2.1.min.js"></script>
+
+<script>
+
+
+
+$("#main_page").click(function (){//首页按钮
+        $.ajax({
+            url: "jump_bole_main/",
+            type: "post",
+            success: function (data) {
+              alert("OK")
+                if (data.msg == 'jump') {
+                    location.href = "/bole_main_page/"
+                }
+            }
+
+
+        })
+    })
+
+  $("#search").click(function (){//搜索岗位跳转
+        $.ajax({
+            url: "jump_main/",
+            type: "post",
+            success: function (data) {
+                if (data.msg == 'jump') {
+                    location.href = "/search.html/"
+                }
+            }
+
+        })
+    })
+
+    $("#myJob").click(function (){//查看自己发布的岗位跳转
+        $.ajax({
+            url: "jump_myJob/",
+            type: "post",
+            success: function (data) {
+                if (data.msg == 'jump') {
+                    location.href = "/myJob/"
+                }
+            }
+
+        })
+    })
+
+    $("#postCode").click(function (){//查看自己发布的岗位跳转
+        $.ajax({
+            url: "jump_main/",
+            type: "post",
+            success: function (data) {
+                if (data.msg == 'jump') {
+                    location.href = "/postCode/"
+                }
+            }
+
+        })
+    })
+
+    $("#personal_page").click(function (){//个人主页岗位跳转
+        $.ajax({
+            url: "jump_main/",
+            type: "post",
+            success: function (data) {
+                if (data.msg == 'jump') {
+                    location.href = "/personal_page.html/"
+                }
+            }
+
+        })
+    })
+
+    $("#delete_job").click(function () {//提交内推码按钮
+      $.ajax({
+        url: "delete_job/",
+        type: "post",
+        data: {
+          JobName: $("#JobName").val(),
+        },
+        success: function (data) {
+          console.log(data);
+          if (data.msg == '修改成功') {
+              alert(data.msg)
+            //   location.href = "/myJob/"
+          }
+          else{
+              alert(data.msg)
+          }
+        }
+
+
+      })
+    })
+</script>
+</body>
+</html>
