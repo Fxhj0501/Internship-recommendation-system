@@ -33,6 +33,16 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+  <style type="text/css">
+    @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+
+
+    .formaltextarea {
+        width: 100%;
+
+    }
+
+</style>
 </head>
 
 <body data-aos-easing="ease-in-out" data-aos-duration="1000" data-aos-delay="0">
@@ -93,26 +103,32 @@
                   <li><i class="bi bi-chevron-right"></i> <strong>日薪:</strong> <span>￥{{ item.Salary }}</span></li> -->
                   <form id="form" class="form">
                     {% csrf_token %}
-                    <div class="form-control">
-                        <label for="school">岗位名称:</label>
-                        <input type="text" id="JobName" name = "school" value="{{item.JobName}}">
+
+                    <div  class="mb-3">
+                      <label for="school" class="form-label">岗位名称:</label>
+                      <input class="form-control" type="text" id="JobName" name = "school" value="{{item.JobName}}">
                     </div>
-                    <div class="form-control">
-                        <label for="school">单位:</label>
-                        <input type="text" id="Company" name = "school" value="{{item.Company}}">
+                    <div  class="mb-3">
+                      <label for="school" class="form-label">单位:</label>
+                      <input class="form-control" type="text" id="Company" name = "school" value="{{item.Company}}">
                     </div>
-                    <div class="form-control">
-                        <label for="skills">地址:</label>
-                        <input type="text" id="Address" value="{{item.Address}}" />
+                    <div  class="mb-3">
+                      <label for="school" class="form-label">地址:</label>
+                      <input class="form-control" type="text" id="Address" name = "school" value="{{item.Address}}">
                     </div>
-                    <div class="form-control">
-                      <label for="skills">联系方式:</label>
-                      <input type="text" id="Contact" value="{{item.ContactInfo}}" />
-                  </div>
-                    <div class="form-control">
+                    <div  class="mb-3">
+                      <label for="school" class="form-label">联系方式:</label>
+                      <input class="form-control" type="text" id="Contact" name = "school" value="{{item.ContactInfo}}">
+                    </div>
+                    <div  class="mb-3">
+                      <label for="school" class="form-label">日薪:</label>
+                      <input class="form-control" type="text" id="Salary" name = "school" value="{{item.Salary}}">
+                    </div>
+
+                    <!-- <div class="form-control">
                         <label for="job">日薪:</label>
                         <input type="text" id="Salary" name = "job" value="{{item.Salary}}">
-                    </div>
+                    </div> -->
                     <!-- <div class="change_info">
                       <input type="button" class="btn btn-default change_info_btn " value="确认提交" id="change_job_info"><span class="error"></span>
                     </div> -->
@@ -126,7 +142,7 @@
         <div class="row">
           <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
             <h3>岗位描述</h3>
-            <textarea rows="8" cols="120" id="JobInfo" >{{item.JobInfo}}</textarea>
+            <textarea class="formaltextarea" rows="8"  id="JobInfo" >{{item.JobInfo}}</textarea>
           </div>
         </div>
 
@@ -136,7 +152,7 @@
             <!-- <p class="fst-italic" style="white-space: pre-line;">
               {{ item.Skills }}
             </p> -->
-            <textarea rows="8" cols="120" id="Skills" >{{item.Skills}}</textarea>
+            <textarea class="formaltextarea" rows="8"  id="Skills" >{{item.Skills}}</textarea>
           </div>
         </div>
 
@@ -146,12 +162,15 @@
             <!-- <p class="fst-italic" style="white-space: pre-line;">
               {{ item.RecCode }}
             </p> -->
-            <textarea rows="2" cols="120" id="RecCode" >{{item.RecCode}}</textarea>
+            <textarea rows="2" cols="40" id="RecCode" >{{item.RecCode}}</textarea>
           </div>
         </div>
 
-        <div class="change_info">
+        <!-- <div class="change_info">
           <input type="button" class="btn btn-default change_info_btn " value="确认修改" id="change_job_info"><span class="error"></span>
+        </div> -->
+        <div class="submit-class">
+          <input type="submit" class="btn btn-default" id="change_job_info" value="确认修改" style="color: white; background-color: #3498db; width:17%; margin-top: 20px;">
         </div>
 
       </div>

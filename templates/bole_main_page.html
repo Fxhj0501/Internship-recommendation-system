@@ -19,15 +19,14 @@
   <div class="container px-4 px-lg-5">
     <a class="navbar-brand" href="#!">欢迎使用</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" style="width:75%">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
         <!-- <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">首页</a></li> -->
 
         <li class="nav-item"><a class="nav-link active" aria-current="page" href="/bole_main_page/">首页</a></li>
+        <li class="nav-item"><a class="nav-link" href="/search/">搜索岗位信息</a></li>
         <li class="nav-item"><a class="nav-link" href="/myJob/">我的岗位信息</a></li>
         <li class="nav-item"><a class="nav-link" href="/postCode/">发布内推码</a></li>
-        <li class="nav-item"><a class="nav-link" href="/bole_personal_page/">个人主页:{{ pho_num }}</a></li>
-        <li class="nav-item"><a class="nav-link" href="/">退出登录</a></li>
         <!--                        <li class="nav-item dropdown">-->
         <!--                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>-->
         <!--                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">-->
@@ -38,6 +37,12 @@
         <!--                            </ul>-->
         <!--                        </li>-->
       </ul>
+      <div style="width:25%">
+        <ur class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+            <li class="nav-item"><a class="nav-link" href="/bole_personal_page/">个人主页:{{ pho_num }}</a></li>
+            <li class="nav-item"><a class="nav-link" href="/">退出登录</a></li>
+        </ur>
+      </div>
       <!-- <form class="d-flex">
         <button class="btn btn-outline-dark" type="submit" id="personal_page">
         
@@ -59,7 +64,7 @@
 </header>
 <!-- Section-->
 <section class="py-5">
-  <div class="container px-4 px-lg-5 mt-5">
+  <div class="container px-4 px-lg-5 mt-5" style="text-align: center">
     <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
       <!--                    第1行-->
       {% for item in items %}
@@ -73,7 +78,7 @@
               <!-- Product name-->
               <h5 class="fw-bolder">{{item.JobName}}</h5>
               <!-- Product price-->
-              ￥{{item.Salary}}
+              ￥{{item.Salary}}/天
             </div>
           </div>
           <!-- Product actions-->
@@ -87,25 +92,21 @@
       </div>
       {% endfor%}
     </div>
-    <p style="white-space: pre-line;">{{test}}</p>
-    <div id="pages" class="text-center" >
-       <nav>
-           <ul class="pagination">
-               <li class="step-links">
-               {% if items.has_previous %}
-                   <a class='active' href="?page={{ books.previous_page_number }}">上一页</a>
-               {% endif %}
 
-               <span class="current">
-                   Page {{ items.number }} of {{ items.paginator.num_pages }}</span>
+    <div id="pages">
 
-               {% if items.has_next %}
-                   <a class='active' href="?page={{ items.next_page_number }}">下一页</a>
-               {% endif %}
-               </li>
-           </ul>
-       </nav>
-     </div>
+      {% if items.has_previous %}
+      <a class='active' href="?page={{ items.previous_page_number }}">上一页</a>
+      {% endif %}
+      <span >
+          Page {{ items.number }} of {{ items.paginator.num_pages }}
+      </span>
+
+      {% if items.has_next %}
+         <a class='active' href="?page={{ items.next_page_number }}">下一页</a>
+      {% endif %}
+   </div>
+   
   </div>
 </section>
 <!-- Footer-->

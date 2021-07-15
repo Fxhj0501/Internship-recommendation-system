@@ -82,27 +82,30 @@
 <!--          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>-->
         </div>
 
-        <form id="form" class="form">
+
+        <form id="form" class="form" style="margin-left: 2rem">
           {% csrf_token %}
 
-          <div class="form-control">
-              <label for="school">单位:</label>
-              <input type="text" id="school" name = "school" value="{{item.CompanyInfo}}">
+          <div  class="mb-3">
+              <label for="school" class="form-label">单位:</label>
+              <input class="form-control" type="text" id="school" name = "school" value="{{item.CompanyInfo}}">
           </div>
-          <div class="form-control">
-              <label for="skills">岗位:</label>
-              <input type="text" id="skills" value="{{item.Job}}" />
+           <div  class="mb-3">
+              <label for="skills" class="form-label">岗位:</label>
+              <input class="form-control" type="text" id="skills" value="{{item.Job}}" />
           </div>
 
-          <div class="form-control">
-              <label for="job">我的内推码:</label>
-              <input type="text" id="job" name = "job" value="{{item.Code}}">
+           <div  class="mb-3">
+              <label for="job" class="form-label">我的内推码:</label>
+              <input class="form-control" type="text" id="job" name = "job" value="{{item.Code}}">
           </div>
-          <div class="change_info">
-            <input type="button" class="btn btn-default change_info_btn " value="确认提交" id="change_info_btn"><span class="error"></span>
+          <!-- <div class="change_info">
+            <input type="button" class="btn btn-default change_info_btn " value="确认提交" id="change_info_btn" style="color: whitesmoke; text-align: center"><span class="error"></span>
+          </div> -->
+          <div class="submit-class">
+            <input type="submit" class="btn btn-default" id="change_info_btn" value="确认提交" style="color: white; background-color: #3498db; width:17%; margin-top: 20px;">
           </div>
         </form>
-
 
 
       </div>
@@ -117,34 +120,37 @@
     <!-- ======= Resume Section ======= -->
     <section id="resume" class="resume">
       <div class="container">
-
-        <div class="section-title">
-          <h2>修改密码</h2>
-        </div>
-        <form id="pasword_form" class="form">
-          {% csrf_token %}
-
-          <div class="form-control">
-             <label for="old_password">旧密码:</label>
-             <input type="password" id="old_password" placeholder="输入旧密码" />
+        <div class="col-4">
+          <div class="section-title">
+            <h2>修改密码</h2>
           </div>
-
-          <div class="form-control">
-            <label for="new_password">新密码:</label>
-            <input type="password" id="new_password" placeholder="输入新密码" />
-          </div>
-          <div class="form-control">
-            <label for="confirm_password">确认密码:</label>
-            <input type="password" id="confirm_password" placeholder="确认密码" />
-          </div>
+          <form id="pasword_form"  style="margin-left: 2rem">
+            {% csrf_token %}
+  
+            <div class="mb-3">
+               <label for="old_password" class="form-label">旧密码:</label>
+               <input class="form-control" type="password" id="old_password" placeholder="输入旧密码" />
+            </div>
+  
+            <div  class="mb-3">
+              <label for="new_password" class="form-label">新密码:</label>
+              <input class="form-control" type="password" id="new_password" placeholder="输入新密码" />
+            </div>
+            <div class="mb-3">
+              <label for="confirm_password" class="form-label">确认密码:</label>
+              <input class="form-control" type="password" id="confirm_password" placeholder="确认密码" />
+            </div>
 <!--          <div class="submit_button">-->
 <!--&lt;!&ndash;            <p style="cursor: pointer; background-color: #3498db; border: 2px solid #3498db; border-radius: 4px; color: #fff;display: block;&ndash;&gt;-->
 <!--&lt;!&ndash;    font-size: 16px;padding: 10px;margin-top: 20px;width: 10%;">&ndash;&gt;-->
 <!--              <input type="button" class="btn btn-default change_pwd" value="确认修改" id="password_button"><span class="error"></span>-->
 <!--            -->
 <!--          </div>-->
-          <div class="reset_pwd">
-            <input type="button" class="btn btn-default" value="确认提交" id="reset_pwd_btn"><span class="error"></span>
+          <!-- <div class="reset_pwd">
+            <input type="submit" class="btn btn-default" value="确认提交" id="reset_pwd_btn" style="color: whitesmoke; text-align: center"><span class="error"></span>
+          </div> -->
+          <div class="submit-class">
+            <input type="submit" class="btn btn-default" id="reset_pwd_btn" value="确认提交" style="color: white; background-color: #3498db; width:50%; margin-top: 20px;">
           </div>
         </form>
 

@@ -21,29 +21,31 @@
     <div class="container px-4 px-lg-5">
       <a class="navbar-brand" href="#!">欢迎使用</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent" style="width:75%">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
           <!-- <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">首页</a></li> -->
+  
           <li class="nav-item"><a class="nav-link active" aria-current="page" href="/bole_main_page/">首页</a></li>
-        <li class="nav-item"><a class="nav-link" href="/search/">搜索岗位信息</a></li>
-        <li class="nav-item"><a class="nav-link" href="/myJob/">我的岗位信息</a></li>
-        <li class="nav-item"><a class="nav-link" href="/postCode/">发布内推码</a></li>
-        <!--                        <li class="nav-item dropdown">-->
-        <!--                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>-->
-        <!--                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">-->
-        <!--                                <li><a class="dropdown-item" href="#!">All Products</a></li>-->
-        <!--                                <li><hr class="dropdown-divider" /></li>-->
-        <!--                                <li><a class="dropdown-item" href="#!">Popular Items</a></li>-->
-        <!--                                <li><a class="dropdown-item" href="#!">New Arrivals</a></li>-->
-        <!--                            </ul>-->
-        <!--                        </li>-->
-      </ul>
-      <div style="width:25%">
-        <ur class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-            <li class="nav-item"><a class="nav-link" href="/bole_personal_page/">个人主页:{{ pho_num }}</a></li>
-            <li class="nav-item"><a class="nav-link" href="/">退出登录</a></li>
-        </ur>
-      </div>
+          <li class="nav-item"><a class="nav-link" href="/search/">搜索岗位信息</a></li>
+          <li class="nav-item"><a class="nav-link" href="/myJob/">我的岗位信息</a></li>
+          <li class="nav-item"><a class="nav-link" href="/postCode/">发布内推码</a></li>
+          <!--                        <li class="nav-item dropdown">-->
+          <!--                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>-->
+          <!--                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">-->
+          <!--                                <li><a class="dropdown-item" href="#!">All Products</a></li>-->
+          <!--                                <li><hr class="dropdown-divider" /></li>-->
+          <!--                                <li><a class="dropdown-item" href="#!">Popular Items</a></li>-->
+          <!--                                <li><a class="dropdown-item" href="#!">New Arrivals</a></li>-->
+          <!--                            </ul>-->
+          <!--                        </li>-->
+        </ul>
+        <div style="width:25%">
+          <ur class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+              <li class="nav-item"><a class="nav-link" href="/bole_personal_page/">个人主页:{{ pho_num }}</a></li>
+              <li class="nav-item"><a class="nav-link" href="/">退出登录</a></li>
+          </ur>
+        </div>
+
         <!-- <form class="d-flex">
           <button class="btn btn-outline-dark" type="submit" id="personal_page">
           
@@ -59,67 +61,69 @@
     <div class="container px-4 px-lg-5 my-5">
       <div class="text-center text-white">
         <h1 class="display-4 fw-bolder">实习岗位推荐系统</h1>
-        <p class="lead fw-normal text-white-50 mb-0">发布内推码</p>
+        <p class="lead fw-normal text-white-50 mb-0">岗位搜索</p>
       </div>
     </div>
   </header>
   <!-- Section-->
 
-  <!-- <form role="form">
-    <div class="form-group">
-      <label for="name">内推码</label>
-      <input type="text" class="form-control" id="code" placeholder="请输入您所在单位的内推码">
-    </div>
-
-
-
-    <input type="submit" class="btn btn-default" id="submit_code" value="确认提交" style="color: rgb(211, 45, 45)">
-  </form> -->
-
   <div class="container  px-4 px-lg-5 mt-5">
     <form role="form">
         <div >
-          <label for="search_info" class="form-label">内推码</label>
-          <input type="text" class="form-control" id="code" placeholder="请输入您所在单位的内推码">
+        <label for="search_info" class="form-label">搜索您想查找的岗位</label>
+        <input type="text" class="form-control" id="search_info" placeholder="请输入关键字，如C++、单位名称等">
         </div>
         <div class="submit-class">
-          <input type="submit" class="btn btn-default" id="submit_code" value="确认提交" style="color: white; background-color: #3498db; width:17%; margin-top: 20px;">
+        <input type="submit" class="btn btn-default" id="submit_search" value="确认提交" style="color: white; background-color: #3498db; width:17%; margin-top: 20px;">
         </div>
 
     </form>
   </div>
 
-
   <section class="py-5">
-    <div class="container px-4 px-lg-5 mt-5">
+    <div class="container px-4 px-lg-5 mt-5" style="text-align: center">
       <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
         <!--                    第1行-->
         {% for item in items %}
         <div class="col mb-5">
           <div class="card h-100">
+            <!-- Product image-->
+            <img class="card-img-top" src="../static/logo/{{ item.Company }}.jpg" alt="..." />
             <!-- Product details-->
             <div class="card-body p-4">
               <div class="text-center">
                 <!-- Product name-->
-                <h5 class="fw-bolder">{{item.name}}</h5>
+                <h5 class="fw-bolder">{{item.JobName}}</h5>
                 <!-- Product price-->
-                {{item.code}}
+                ￥{{item.Salary}}/天
               </div>
             </div>
             <!-- Product actions-->
             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-              <div class="text-center">
-                <input type="button" class="btn btn-outline-dark mt-auto" value="删除" id="delete_code"><span class="error"></span>
-              </div>
+              <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="/job_detail/{{ item.JobName }}/">详情</a></div>
             </div>
           </div>
-
-
-
+  
         </div>
         {% endfor%}
       </div>
 
+
+      {%if items%}
+      <div id="pages">
+
+     {% if items.has_previous %}
+     <a class='active' href="?page={{ items.previous_page_number }}">上一页</a>
+     {% endif %}
+     <span >
+         Page {{ items.number }} of {{ items.paginator.num_pages }}
+     </span>
+
+     {% if items.has_next %}
+        <a class='active' href="?page={{ items.next_page_number }}">下一页</a>
+     {% endif %}
+     </div>
+    {%endif%}
     </div>
   </section>
   <!-- Footer-->
@@ -203,18 +207,18 @@
       })
     })
 
-    $("#submit_code").click(function () {//提交内推码按钮
+    $("#submit_search").click(function () {//提交内推码按钮
       $.ajax({
-        url: "submit_code/",
+        url: "submit_search/",
         type: "post",
         data: {
-          code: $("#code").val(),
+          search_info: $("#search_info").val(),
         },
         success: function (data) {
           console.log(data);
           if (data.msg == '提交成功') {
               alert(data.msg)
-              location.href = "/myJob/"
+              location.href = "/reload_search/"
           }
           else{
               alert(data.msg)
