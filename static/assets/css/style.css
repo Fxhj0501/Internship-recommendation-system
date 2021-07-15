@@ -1081,9 +1081,11 @@ section {
     color: #fff;
     display: block;
     font-size: 16px;
-    padding: 10px;
+    padding: 5px;
     margin-top: 20px;
     width: 100%;
+    letter-spacing:2rem;
+    text-align: center;
 }
 
 .reset_pwd{
@@ -1094,9 +1096,11 @@ section {
     color: #fff;
     display: block;
     font-size: 16px;
-    padding: 10px;
+    padding: 5px;
     margin-top: 20px;
     width: 100%;
+    letter-spacing:2rem;
+    text-align: center;
 }
 
 #submit_button{

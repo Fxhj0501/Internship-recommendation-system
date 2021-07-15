@@ -10853,3 +10853,17 @@ p{
         display: none !important;
     }
 }
+.submit-class{
+    cursor: pointer;
+    background-color: #3498db;
+    border-radius: 4px;
+    color: white;
+    display: block;
+    font-size: 16px;
+    padding: 5px;
+    margin-top: 20px;
+    width: 17%;
+    letter-spacing:2rem;
+    text-align: center;
+
+}
