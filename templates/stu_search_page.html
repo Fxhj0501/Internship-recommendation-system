@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,6 +35,33 @@
           <li class="nav-item"><a class="nav-link" href="/">退出登录</a></li>
         </ur>
       </div>
+      <!--        <input type="button" class="nav-item" value="岗位推荐" id="recommend"><span class="error"></span>-->
+      <!--        <a href="/"><button type="button">岗位推荐</button></a>-->
+      <!--                        <li class="nav-item dropdown">-->
+      <!--                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>-->
+      <!--                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">-->
+      <!--                                <li><a class="dropdown-item" href="#!">All Products</a></li>-->
+      <!--                                <li><hr class="dropdown-divider" /></li>-->
+      <!--                                <li><a class="dropdown-item" href="#!">Popular Items</a></li>-->
+      <!--                                <li><a class="dropdown-item" href="#!">New Arrivals</a></li>-->
+      <!--                            </ul>-->
+      <!--                        </li>-->
+
+      <!--        <button class="btn btn-outline-dark" type="submit">-->
+      <!--          &lt;!&ndash;                            <i class="bi-cart-fill me-1"></i>&ndash;&gt;-->
+      <!--        <a href="/stu_personal_page/">-->
+      <!--          <u1 id="personal_page" href="/stu_personal_page/">-->
+      <!--              {{ pho_num }}-->
+      <!--          </u1>-->
+      <!--        </a>-->
+      <!--          &lt;!&ndash;                            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>&ndash;&gt;-->
+      <!--        </button>-->
+
+      <!--      电话号码-->
+      <!--      <a href="/stu_personal_page/"><p>{{ pho_num }}</p> </a>-->
+      <!--      <a href="/"><p>退出登录</p> </a>-->
+
+
     </div>
   </div>
 </nav>
@@ -42,14 +70,25 @@
   <div class="container px-4 px-lg-5 my-5">
     <div class="text-center text-white">
       <h1 class="display-4 fw-bolder">实习岗位推荐系统</h1>
-      <p class="lead fw-normal text-white-50 mb-0">主页</p>
+      <p class="lead fw-normal text-white-50 mb-0">岗位搜索</p>
     </div>
   </div>
 </header>
 <!-- Section-->
+<div class="container  px-4 px-lg-5 mt-5">
+    <div >
+      <label for="search_info" class="form-label">搜索您想查找的岗位</label>
+      <input type="text" class="form-control" id="search_info" placeholder="请输入关键字，如C++、单位名称等">
+    </div>
+    <div class="submit-class">
+      <input type="submit" class="btn btn-default" id="submit_search" value="确认提交" style="color: white; background-color: #3498db; width:17%; margin-top: 20px;">
+    </div>
+
+</div>
 <section class="py-5">
 
   <div class="container px-4 px-lg-5 mt-5" style="text-align: center">
+
     <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
       {% for item in items %}
       <div class="col mb-5">
@@ -67,7 +106,7 @@
           </div>
           <!-- Product actions-->
           <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="/job_detail/{{item.jobName}}/">详情</a></div>
+            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="/stu_job_detail/{{item.jobName}}/">详情</a></div>
           </div>
         </div>
 
@@ -79,6 +118,7 @@
 
     </div>
     <!--      <p style="white-space: pre-line;">{{test}}</p>-->
+    {%if items%}
     <div id="pages">
 
       {% if items.has_previous %}
@@ -92,6 +132,7 @@
       <a class='active' href="?page={{ items.next_page_number }}">下一页</a>
       {% endif %}
     </div>
+    {%endif%}
 
   </div>
 </section>
@@ -105,49 +146,27 @@
 <script src="/static/jquery-3.2.1.min.js"></script>
 
 <script>
-  // $("#personal_page").on(function (){
-  //   $.ajax({
-  //      url : "personal_account/",//请求地址
-  //      dataType : "json",//数据格式
-  //      type : "post",//请求方式
-  //      // async : false,//是否异步请求
-  //      success : function(data) {   //如何发送成功
-  //      // var html = "";
-  //      // for(var i=0;i<data.msg.length;i++){    //遍历data数组
-  //      //         var ls = data[i];
-  //      //         html +="<li><a href='second page text.html?newsid="+ls.news_id+"'class='infNews_wrod_a'><span>"+ls.news_name+"</span></a><span class='date'>"+ls.news_time+"</span></li>";
-  //      //     }
-  //          //alert("13810874508");
-  //           $("#personal_page").append("138"); //在html页面id=personal_page的标签里显示html内容
-  //      },
-  //  })
-  // })
-  // $("#main_page").click(function (){
-  //       $.ajax({
-  //           url: "jump_main/",
-  //           type: "post",
-  //           success: function (data) {
-  //             alert("OK")
-  //               if (data.msg == 'jump') {
-  //                   location.href = "/main_page.html/"
-  //               }
-  //           }
-  //
-  //
-  //       })
-  //   })
-  // $("#recommend").click(function (){
-  //       $.ajax({
-  //           url: "jump_main/",
-  //           type: "post",
-  //           success: function (data) {
-  //               if (data.msg == 'jump') {
-  //                   location.href = "/recommend.html/"
-  //               }
-  //           }
-  //
-  //       })
-  //   })
+  $("#submit_search").click(function () {//提交内推码按钮
+    $.ajax({
+      url: "stu_submit_search/",
+      type: "post",
+      data: {
+        search_info: $("#search_info").val(),
+      },
+      success: function (data) {
+        console.log(data);
+        if (data.msg == '提交成功') {
+          alert(data.msg)
+          location.href = "/stu_reload_search/"
+        }
+        else{
+          alert(data.msg)
+        }
+      }
+
+
+    })
+  })
 </script>
 </body>
 </html>

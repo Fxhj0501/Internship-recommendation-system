@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>推荐系统</title>
+  <!--    <link rel="stylesheet" href="/static/bootstrap.css">-->
+  <link rel="stylesheet" href="{% static '../static/forLogin.css' %}" />
+</head>
+<body>
+<h1>推荐系统信息</h1>
+<div class="container">
+  <form id="form" class="form">
+    {% csrf_token %}
+    <div class="form-control">
+      <label id="ser">技能（例如：C++,JAVA,Python）</label>
+      <input type="text" id="skills"  value="{{ item.skills}}">
+    </div>
+    <div class="form-control">
+      <label for="adress">期望工作地址（只填写区）</label>
+      <input type="text" id="adress" name = "phone" placeholder="只填写区">
+    </div>
+    <div class="form-control">
+      <label for="salary">期望薪资（日新）</label>
+      <input type="text" id="salary" name = "phone" placeholder="日薪">
+    </div>
+    <div class="form-control">
+      <label for="salary">期望实习时长（月）</label>
+      <input type="text" id="period" name = "phone" placeholder="月">
+    </div>
+    <div class="submit_button">
+      <input type="button" class="btn btn-default login_btn" value="开始推荐" id="submit_button"><span class="error"></span>
+    </div>
+  </form>
+  <a href="/main_page/"><input type="button" class="btn btn-default stu_reg_btn" value="返回主页" id="for_stu_reg"><span class="error"></span></a>
+</div>
+
+
+
+<script src="/static/jquery-3.2.1.min.js"></script>
+<script>
+  // 提交表单
+  $(".login_btn").click(function () {
+    $.ajax({
+      url: "main_page/recommend_data_form/index/recommend_page/",
+      type: "post",
+      data: {
+        skills:$("#skills").val(),
+        adress: $("#adress").val(),
+        salary: $("#salary").val(),
+        period: $("#period").val()
+      },
+      success: function (data) {
+        console.log(data);
+        if (data.msg == '推荐成功') {
+          location.href = "/recommend_page/"
+        }
+        else{
+          alert(data.msg)
+        }
+      }
+    })
+  })
+
+
+</script>
+</body>
+</html>

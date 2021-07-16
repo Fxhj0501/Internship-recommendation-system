@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<!-- saved from url=(0056)file:///Users/fengzijian/Downloads/iPortfolio/index.html -->
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>iPortfolio Bootstrap Template - Index</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="../static/assets/img/favicon.png" rel="icon">
+  <link href="../static/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="../static/assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../static/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../static/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../static/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../static/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../static/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="../static/assets/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: iPortfolio - v3.3.0
+  * Template URL: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body data-aos-easing="ease-in-out" data-aos-duration="1000" data-aos-delay="0">
+
+<!-- ======= Mobile nav toggle button ======= -->
+<i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
+
+<!-- ======= Header ======= -->
+<header id="header">
+  <div class="d-flex flex-column">
+
+    <div class="profile">
+      <img src="../static/iPortfolio Bootstrap Template - Index_files/user.jpg" alt="" class="img-fluid rounded-circle">
+      <h1 class="text-light"><a href="/">{{ item.PhoneNum }}</a></h1>
+    </div>
+
+    <nav id="navbar" class="nav-menu navbar">
+      <ul>
+        <li><a href="#hero" class="nav-link scrollto"><i class="bx bx-home"></i> <span>个人主页</span></a></li>
+        <li><a href="#about" class="nav-link scrollto active"><i class="bx bx-user"></i> <span>个人信息修改</span></a></li>
+        <li><a href="#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>修改密码</span></a></li>
+        <li><a href="/bole_main_page/" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>返回主页</span></a></li>
+        <li><a href="/" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>退出登录</span></a></li>
+
+      </ul>
+    </nav><!-- .nav-menu -->
+  </div>
+</header><!-- End Header -->
+
+<!-- ======= Hero Section ======= -->
+<section id="hero" class="d-flex flex-column justify-content-center align-items-center">
+  <div class="hero-container aos-init aos-animate" data-aos="fade-in">
+    <h1>{{ item.phoneNum }}</h1>
+    <p>I'm <span class="typed" data-typed-items="Bole"></span></p>
+  </div>
+</section><!-- End Hero -->
+
+<main id="main">
+
+  <!-- ======= About Section ======= -->
+  <section id="about" class="about">
+    <div class="container">
+
+      <div class="section-title">
+        <h2>修改个人信息</h2>
+        <!--          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>-->
+      </div>
+
+
+      <form id="form" class="form" style="margin-left: 2rem">
+        {% csrf_token %}
+
+        <div  class="mb-3">
+          <label for="job" class="form-label">岗位:</label>
+          <input class="form-control" type="text" id="job" value="{{item.jobName}}" />
+        </div>
+
+        <div  class="mb-3">
+          <label for="recCode" class="form-label">我的内推码:</label>
+          <input class="form-control" type="text" id="recCode" name = "recCode" value="{{item.recCode}}">
+        </div>
+        <!-- <div class="change_info">
+          <input type="button" class="btn btn-default change_info_btn " value="确认提交" id="change_info_btn" style="color: whitesmoke; text-align: center"><span class="error"></span>
+        </div> -->
+        <div class="submit-class">
+          <input type="submit" class="btn btn-default" id="change_info_btn" value="确认提交" style="color: white; background-color: #3498db; width:17%; margin-top: 20px;">
+        </div>
+      </form>
+
+
+    </div>
+  </section><!-- End About Section -->
+
+  <!-- ======= Facts Section ======= -->
+  <!-- End Facts Section -->
+
+  <!-- ======= Skills Section ======= -->
+  <!-- End Skills Section -->
+
+  <!-- ======= Resume Section ======= -->
+  </section><!-- End About Section -->
+
+  <!-- ======= Facts Section ======= -->
+  <!-- End Facts Section -->
+
+  <!-- ======= Skills Section ======= -->
+  <!-- End Skills Section -->
+
+  <!-- ======= Resume Section ======= -->
+  <section id="resume" class="resume">
+    <div class="container">
+      <div class="col-4">
+        <div class="section-title">
+          <h2>修改密码</h2>
+        </div>
+        <form id="pasword_form"  style="margin-left: 2rem">
+          {% csrf_token %}
+
+          <div class="mb-3">
+            <label for="old_password" class="form-label">旧密码:</label>
+            <input class="form-control" type="password" id="old_password" placeholder="输入旧密码" />
+          </div>
+
+          <div  class="mb-3">
+            <label for="new_password" class="form-label">新密码:</label>
+            <input class="form-control" type="password" id="new_password" placeholder="输入新密码" />
+          </div>
+          <div class="mb-3">
+            <label for="confirm_password" class="form-label">确认密码:</label>
+            <input class="form-control" type="password" id="confirm_password" placeholder="确认密码" />
+          </div>
+
+          <div class="reset_pwd">
+            <input type="submit" class="btn btn-default" value="确认提交" id="reset_pwd_btn" style="color: whitesmoke; text-align: center"><span class="error"></span>
+          </div>
+        </form>
+      </div>
+
+
+
+    </div>
+  </section><!-- End Resume Section -->
+  <!-- End Resume Section -->
+
+  <!-- ======= Portfolio Section ======= -->
+  <!-- End Portfolio Section -->
+
+  <!-- ======= Services Section ======= -->
+  <!-- End Services Section -->
+
+  <!-- ======= Testimonials Section ======= -->
+  <!-- End Testimonials Section -->
+
+  <!-- ======= Contact Section ======= -->
+  <!-- End Contact Section -->
+
+</main><!-- End #main -->
+
+<!-- ======= Footer ======= -->
+<footer id="footer">
+  <div class="container">
+    <div class="copyright">
+      © Copyright <strong><span>2018软工课设 18组</span></strong>
+    </div>
+    <div class="credits">
+      Designed by 2018软工课设 18组
+    </div>
+  </div>
+</footer><!-- End  Footer -->
+
+<!--  <a href="file:///Users/fengzijian/Downloads/iPortfolio/index.html#" class="back-to-top d-flex align-items-center justify-content-center active"><i class="bi bi-arrow-up-short"></i></a>-->
+
+<!-- Vendor JS Files -->
+<script src="../static/iPortfolio Bootstrap Template - Index_files/aos.js"></script>
+<script src="../static/iPortfolio Bootstrap Template - Index_files/bootstrap.bundle.min.js"></script>
+<script src="../static/iPortfolio Bootstrap Template - Index_files/glightbox.min.js"></script>
+<script src="../static/iPortfolio Bootstrap Template - Index_files/isotope.pkgd.min.js"></script>
+<script src="../static/iPortfolio Bootstrap Template - Index_files/validate.js"></script>
+<script src="../static/iPortfolio Bootstrap Template - Index_files/purecounter.js"></script>
+<script src="../static/iPortfolio Bootstrap Template - Index_files/swiper-bundle.min.js"></script>
+<script src="../static/iPortfolio Bootstrap Template - Index_files/typed.min.js"></script>
+<script src="../static/iPortfolio Bootstrap Template - Index_files/noframework.waypoints.js"></script>
+
+<!-- Template Main JS File -->
+<script src="../static/iPortfolio Bootstrap Template - Index_files/main.js"></script>
+<style type="text/css" data-typed-js-css="true">
+  .typed-cursor{
+    opacity: 1;
+  }
+  .typed-cursor.typed-cursor--blink{
+    animation: typedjsBlink 0.7s infinite;
+    -webkit-animation: typedjsBlink 0.7s infinite;
+    animation: typedjsBlink 0.7s infinite;
+  }
+  @keyframes typedjsBlink{
+    50% { opacity: 0.0; }
+  }
+  @-webkit-keyframes typedjsBlink{
+    0% { opacity: 1; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1; }
+  }
+</style>
+
+<script src="../static/jquery-3.2.1.min.js"></script>
+<script>
+  $("#change_info_btn").click(function () {
+    $.ajax({
+      url: "/bole_personal_page/fix_info/",
+      type: "post",
+      data: {
+        jobName: $("#job").val(),
+        recCode: $("#recCode").val()
+      },
+      success: function (data) {
+        alert("success")
+        if (data.msg == '修改信息成功') {
+          alert(data.msg)
+          location.href = "/bole_personal_page/"
+        }
+
+        else{
+           alert(data.msg)
+        }
+      }
+    })
+
+  })
+
+  $(".reset_pwd").click(function () {
+    //alert("reset")
+    $.ajax({
+      url: "/bole_personal_page/reset_pwd/",
+      type: "post",
+      data: {
+        Password: $("#old_password").val(),
+        NewPassord: $("#new_password").val(),
+        ConfirmPassword: $("#confirm_password").val()
+      },
+      success: function (data) {
+        console.log(data);
+        if (data.msg == '修改密码成功') {
+          alert("success")
+          //location.href = "stu_personal_page.html/"
+        }
+
+        else{
+          alert(data.msg)
+        }
+      }
+    })
+
+  })
+
+
+
+</script>
+
+
+</body>
+</html>
